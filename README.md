@@ -1,5 +1,9 @@
 # README
 
+Internetowa aplikacja integrująca osoby aktywnie uprawiające sport
+
+heroku repository link: https://cryptic-mesa-27152.herokuapp.com
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
