@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Inzynierka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +11,55 @@
   </head>
 
   <body>
-    <%= yield %>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <%= link_to 'Web App', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">        
+          <% if current_user.present? %>
+            <%= link_to "Events", events_path, class: 'nav-item nav-link' %>
+            <%= link_to "Log out", sessions_path,  class: 'nav-item nav-link', method: :delete %>
+          <% else %>
+            <%= link_to "Sign in", new_session_path, class: 'nav-item nav-link' %>
+            <%= link_to "Sign up", new_registration_path, class: 'nav-item nav-link' %>         
+          <% end %>  
+        </div>
+      </div>
+    </nav>
+    <% if alert.present? %>
+      <div class="container">
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if notice.present? %>
+      <div class="container">
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+    
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <h3>Side bar</h3>
+          <p>Kategoria 1</p>
+          <p>Kategoria 2</p>
+          <p>Kategoria 3</p>
+          <p>Kategoria 4</p>
+        </div>
+        <div class="col-md-9">
+          <%= yield %>
+        </div>
+    </div>
+  </div>
   </body>
 
 </html>
