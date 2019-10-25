@@ -54,3 +54,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+# My gems
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+gem 'bcrypt', '~> 3.1.7'
+gem 'pry'
+# gem 'sendgrid-ruby'

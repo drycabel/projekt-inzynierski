@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ .custom-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    @media screen and (max-width: '767px') {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (max-width: '479px') {
+        grid-template-columns: 1fr;
+    }
+ }
