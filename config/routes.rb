@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :events, only: [:index, :new, :create]
+  resources :events do
+    member do
+      get :confirm_destroy
+    end
+  end
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create]
   resource :sessions, only: [:destroy]

@@ -12,11 +12,39 @@ class EventsController < ApplicationController
         # binding.pry
         @event = Event.new(event_params)
         if @event.save
-            redirect_to events_path, notice: "Event created sucessfully"            
+            redirect_to events_path, notice: "Event created successfully"            
         else
             render :new
         end
     end
+
+    def edit
+        @event = Event.find(params[:id])
+    end
+
+    def update
+        @event = Event.find(params[:id])
+        if @event.update_attributes!(event_params)
+            redirect_to events_path, notice: "Event updated successfully"
+        else
+            render :edit
+        end
+    end
+
+    def show
+        @event = Event.find(params[:id])
+    end
+
+    def confirm_destroy
+        @event = Event.find(params[:id])
+    end
+    
+    def destroy
+        @event = Event.find(params[:id])
+        @event.destroy
+        redirect_to events_path, notice: "Event destroyed successfully"
+    end
+
 
     private
 
