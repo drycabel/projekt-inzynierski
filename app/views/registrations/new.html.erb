@@ -1,4 +1,11 @@
 <h1>Sign up</h1>
+
+<% if @form.errors.present? %>
+    <%- @form.errors.full_messages.each do |msg| %>
+        <p class="alert alert-danger"><%= msg, class: 'alert alert-danger' %></p>
+    <% end %>
+<% end %>
+
 <%= form_with url: registrations_path, local: true do |f| %>
     <div class="form-group">
         <%= f.label :email, 'E-mail' %>
