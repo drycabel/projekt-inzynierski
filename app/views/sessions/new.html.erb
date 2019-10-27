@@ -1,8 +1,10 @@
-<p id=”alert”>
-    <%= alert %>
-</p>
-
 <h1>Sign in</h1>
+
+<% if @form.errors.present? %>
+    <%- @form.errors.full_messages.each do |msg| %>
+        <p class="alert alert-danger"><%= msg %></p>
+    <% end %>
+<% end %>
 
 <%= form_with url: sessions_path, local: true do |f| %>
     <div class="form-group">
