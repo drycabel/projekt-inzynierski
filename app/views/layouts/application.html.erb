@@ -28,26 +28,11 @@
           <% end %>  
         </div>
       </div>
-    </nav>
-    <% if alert.present? %>
-      <div class="container">
-        <div class="alert alert-danger" role="alert">
-          <%= alert %>
-        </div>
-      </div>
-    <% end %>
-
-    <% if notice.present? %>
-      <div class="container">
-        <div class="alert alert-success" role="alert">
-          <%= notice %>
-        </div>
-      </div>
-    <% end %>
-    
+    </nav>     
 
     <div class="container-fluid">
       <div class="row">
+      
         <div class="col-md-3">
           <h3>Side bar</h3>
           <p>Kategoria 1</p>
@@ -55,7 +40,24 @@
           <p>Kategoria 3</p>
           <p>Kategoria 4</p>
         </div>
+
         <div class="col-md-9">
+          <% if alert.present? %>
+            <div class="container">
+              <div class="alert alert-danger" role="alert">
+                <%= alert %>
+              </div>
+            </div>
+          <% end %>
+
+          <% if notice.present? %>
+            <div class="container">
+              <div class="alert alert-success" role="alert">
+                <%= notice %>
+              </div>
+            </div>
+          <% end %>
+
           <%= yield %>
         </div>
     </div>
