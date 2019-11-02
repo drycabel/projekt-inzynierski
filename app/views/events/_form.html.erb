@@ -1,8 +1,4 @@
-<% if @event.errors.present? %>
-    <%- @event.errors.full_messages.each do |msg| %>
-        <p class="alert alert-danger"><%= msg %></p>
-    <% end %>
-<% end %>
+<%= render partial: 'shared/errors', locals: {object: @event} %>
 <%= form_with model: @event, local: true do |f| %>
     <div class="form-group">
         <%= f.label :title, 'Title' %>

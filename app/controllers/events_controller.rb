@@ -9,6 +9,7 @@ class EventsController < ApplicationController
     end
 
     def create 
+        # stworzyc membership dla ownera i przypiac ownera / transakcja - form object
         # binding.pry
         @event = Event.new(event_params)
         if @event.save
@@ -44,6 +45,8 @@ class EventsController < ApplicationController
         @event.destroy
         redirect_to events_path, notice: "Event destroyed successfully"
     end
+
+
 
 
     private

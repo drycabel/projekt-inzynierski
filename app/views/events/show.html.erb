@@ -1,3 +1,5 @@
 <h3><%= @event.title %></h3>
 <p><%= @event.description %></p>
 <%= link_to "Back", events_path, class:"btn btn-primary" %>
+<%= link_to "J", event_join_event_path(@event), class:"btn btn-info", method: :post %>
+<button type="button" class="btn btn-info">Join</button>
