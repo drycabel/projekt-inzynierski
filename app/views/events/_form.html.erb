@@ -1,5 +1,5 @@
-<%= render partial: 'shared/errors', locals: {object: @event} %>
-<%= form_with model: @event, local: true do |f| %>
+<%= render partial: 'shared/errors', locals: {object: @form} %>
+<%= form_with url: events_path, local: true do |f| %>
     <div class="form-group">
         <%= f.label :title, 'Title' %>
         <%= f.text_field :title, class: 'form-control', required: true %>
