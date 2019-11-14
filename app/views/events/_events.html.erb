@@ -1,13 +1,16 @@
 <div class="custom-cards">
     <% collection.each do |event| %>
         <%- event_decorator = EventDecorator.new(event) %>
-        <div class="card">                    
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title"><%= event_decorator.title %></h5>                
+                <h5 class="card-title"><%= event_decorator.title %></h5>
                 <p class="card-text"><%= event_decorator.description %></p>
                 <%= link_to "Details", event_path(event), class: "btn btn-info btn-sm" %>
                 <%= link_to "Edit", edit_event_path(event), class: "btn btn-primary btn-sm" %>
                 <%= link_to "Destroy", confirm_destroy_event_path(event), class: "btn btn-danger btn-sm", data: {confirmed: 'Are you sure?'} %>
+                <% if event.can_i_join?(current_user) %>
+                    <%= link_to "Join", event_join_event_path(event), method: :post , class: "btn btn-primary btn-sm" %>
+                <% end %>
                 <p class="card-text">Creator: <%= event_decorator.owner_email %></p>
             </div>
         </div>

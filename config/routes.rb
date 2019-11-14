@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :events do
     # resource :dupa, only: [:show]
-    resource :join_event, controller: :join_events, only: [:create]
+    resource :join_event, controller: :join_events, only: [:create], path: 'join'
     member do
       get :confirm_destroy
     end
