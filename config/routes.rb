@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :events do
     # resource :dupa, only: [:show]
     resource :join_event, controller: :join_events, only: [:create], path: 'join'
+    resource :quit_event, controller: :quit_events, only: [:destroy], path: 'quit'
     member do
       get :confirm_destroy
     end
