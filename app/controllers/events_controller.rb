@@ -2,6 +2,8 @@ class EventsController < ApplicationController
 
     def index
         @events = Event.all
+        @event_roles = Membership.where(event_id: @events.ids, user_id: current_user.id).each_with_object({}) {|member, result| result[member.event_id] = member.role}
+        #  binding.pry
     end
 
     def new
@@ -18,12 +20,12 @@ class EventsController < ApplicationController
     end
 
     def edit
-        @event = Event.find(params[:id])
+        @form = EventUpdaterForm.new(event_id: params[:id])
     end
 
     def update
-        @event = Event.find(params[:id])
-        if @event.update_attributes!(event_params)
+        @form = EventUpdaterForm.new(event_params.merge(owner: current_user, event_id: params[:id]))
+        if @form.save
             redirect_to events_path, notice: "Event updated successfully"
         else
             render :edit
@@ -32,6 +34,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
+        @members = User.joins(:memberships).where(memberships: {event: @event})
     end
 
     def confirm_destroy

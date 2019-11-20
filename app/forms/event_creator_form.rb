@@ -7,16 +7,20 @@ class EventCreatorForm
 
     def save
         return false unless valid?
-        ActiveRecord::Base.transaction do 
-            event = Event.create!(title: title, description: description, owner: current_user)
-            Membership.create!(user: current_user, event: event, join_date: Time.now)
+        ActiveRecord::Base.transaction do
+            event.save!
+            Membership.create!(user: current_user, event: event, join_date: Time.now, role: 20)
         end
         true
-    
-    rescue => e 
-        errors.add(:base, "Something went wrong - #{e.inspect}")   
-        #powyzej mozna uzyc Rollbar lub BugSnag 
-        false 
+
+    rescue => e
+        errors.add(:base, "Something went wrong - #{e.inspect}")
+        #powyzej mozna uzyc Rollbar lub BugSnag
+        false
+    end
+
+    def event
+        @event ||= Event.new(title: title, description: description, owner: current_user)
     end
 
     private
