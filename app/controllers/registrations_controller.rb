@@ -8,13 +8,13 @@ class RegistrationsController < ApplicationController
        # binding.pry
        @form = RegistrationForm.new(registration_params)
        if @form.save
-        redirect_to root_path, notice: "User was succesfully registered"
+        redirect_to root_path, notice: "Confirmation email was sent"
        else
         render :new
        end
     end
 
-    private 
+    private
 
     def registration_params
         params.permit(:email, :password)

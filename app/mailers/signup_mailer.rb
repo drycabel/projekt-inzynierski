@@ -1,6 +1,6 @@
 class SignupMailer < ApplicationMailer
-    def call(email, token) 
+    def call(email, token)
         @token = token
-        mail(to: email, subject: 'import failed')
+        mail(to: email, subject: 'Registration')
     end
 end

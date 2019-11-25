@@ -8,7 +8,7 @@
                 <%= link_to "Details", event_path(event), class: "btn btn-info btn-sm" %>
                 <% if event.can_i_manage_event?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
                     <%= link_to "Edit", edit_event_path(event), class: "btn btn-primary btn-sm" %>
-                    <%= link_to "Destroy", confirm_destroy_event_path(event), class: "btn btn-danger btn-sm", data: {confirmed: 'Are you sure?'} %>
+                    <%= link_to "Destroy", event_path(event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
                 <% end %>
                 <% if event.can_i_join?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
                     <%= link_to "Join", event_join_event_path(event), method: :post , class: "btn btn-primary btn-sm" %>

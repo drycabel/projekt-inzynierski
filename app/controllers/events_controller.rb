@@ -34,17 +34,12 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
-        @members = User.joins(:memberships).where(memberships: {event: @event})
-    end
-
-    def confirm_destroy
-        @event = Event.find(params[:id])
     end
 
     def destroy
-        @event = Event.find(params[:id])
-        @event.destroy
-        redirect_to events_path, notice: "Event destroyed successfully"
+        service = EventDestroyer.new(params[:id], current_user)
+        key = (service.destroyed_successfully? ? "notice" : "alert")
+        redirect_to events_path, {"#{key}": service.msg}
     end
 
     private
