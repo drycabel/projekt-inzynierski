@@ -3,47 +3,47 @@ class RegistrationForm
 
     attr_accessor :email, :password
 
-    validates :email, presence: true
+    validates :email, :password, presence: true
+    #validacja na haslo min 8 znakow
     # validates :email_uniq
 
     def save
         return false unless valid?
-        call
-        send_email
+        ActiveRecord::Base.transaction { call }
         true
     rescue => e
-        @user&.destroy
-        @token&.destroy
+        errors.add(:base, "Something went wrong #{e.inspect}")
+        false
     end
 
     private
 
     def call
-        ActiveRecord::Base.transaction do
-            begin 
-                create_user
-                token
-            rescue => e
-                fail "User can't be created"
-            end
-        end
+        UserExistMailer.call(email).deliver! and return if existed_user.present? && existed_user.confirmed?
+        inactivate_tokens if existed_user.present? && existed_user.unconfirmed?
+        create_user
+        SignupMailer.call(email, token.value).deliver!
+        user.unconfirm
     end
 
-    def send_email
-        SignupMailer.call(email, token.value).deliver!
+    def existed_user
+        return @existed_user if defined? @existed_user
+        @existed_user = User.find_by("lower(email) = ?", email)
+    end
+
+    def inactivate_tokens
+        existed_user.tokens.update_all(active: false)
+    end
+
+    def user
+        @user ||= User::New.create!(email: email, password: password)
     end
 
     def create_user
-        @user = User.create!(email: email, password: password)
+        user
     end
 
     def token
-        @token ||= Token.create(email: email, value: SecureRandom.uuid)
+        @token ||= Token.create(user: user, value: SecureRandom.uuid)
     end
-
-    def email_uniq
-        return unless User.find_by(email: email).present?
-        errors.add(:email, "already taken")
-    end
-
 end

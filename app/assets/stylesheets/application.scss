@@ -17,7 +17,8 @@
 
  .custom-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     @media screen and (max-width: '767px') {
@@ -25,5 +26,15 @@
     }
     @media screen and (max-width: '479px') {
         grid-template-columns: 1fr;
+    }
+ }
+
+ ul.event-members-list {
+    li {
+        color: blue;
+
+        &.invitation {
+            color: red;
+        }
     }
  }

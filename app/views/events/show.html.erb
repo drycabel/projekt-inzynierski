@@ -3,12 +3,30 @@
 <hr>
 <div>
     <h4>Event members</h4>
-    <ul>
-        <% @members.each do |m| %>
-            <li><%= m.email %></p>
+    <ul class="event-members-list">
+        <% @event.users.each do |user| %>
+            <li><%= user.email %></p>
+        <% end %>
+    </ul>
+    <ul class="event-members-list">
+        <% @event.invitations.each do |invitation| %>
+            <li class="invitation"><%= invitation.email %></p>
         <% end %>
     </ul>
 </div>
+<hr>
+<div>
+    <h4>Invite to this event</h4>
+    <%= form_with url: event_invitations_path(@event), method: :post, local: true do |f| %>
+    <div class="form-group">
+        <%= f.label :email, 'Email' %>
+        <%= f.email_field :email, class: 'form-control', required: true %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Invite", class: 'btn btn-primary' %>
+    </div>
+<% end %>
+</div>
 <br>
 <%= link_to "Back", events_path, class:"btn btn-primary" %>
-<%= link_to "Join", event_join_event_path(@event), class:"btn btn-info", method: :post %>
+<%# dodać join button %>
