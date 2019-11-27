@@ -15,7 +15,6 @@ class EventCreatorForm
 
     rescue => e
         errors.add(:base, "Something went wrong - #{e.inspect}")
-        #powyzej mozna uzyc Rollbar lub BugSnag
         false
     end
 

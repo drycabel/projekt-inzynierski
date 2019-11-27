@@ -15,6 +15,10 @@ class InvitationForm
         #
     end
 
+    def call
+
+    end
+
 
     private
 

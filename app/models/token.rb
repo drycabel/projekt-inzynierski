@@ -3,5 +3,9 @@ class Token < ApplicationRecord
     belongs_to :user
     def expired?
         (Time.current - created_at).to_i > EXPIRATION_TIME
-      end
+    end
+
+    def deactivate
+        self.update(active: false)
+    end
 end
