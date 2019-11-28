@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_123102) do
+ActiveRecord::Schema.define(version: 2019_11_28_120247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_123102) do
     t.integer "recipient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 10
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -48,7 +49,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_123102) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.integer "ownerable_id"
+    t.string "ownerable_type"
     t.index ["value"], name: "index_tokens_on_value"
   end
 

@@ -26,6 +26,7 @@ class ConfirmationsController < ApplicationController
         validate :user_email_correctness
         validate :token_used
         validate :token_expiration
+        validate :token_presence
 
         def save
             return false unless valid?
@@ -36,21 +37,23 @@ class ConfirmationsController < ApplicationController
         private
 
         def call
-            activate_token.deactivate
+            activate_token.update!(active: false)
             user.confirm
         end
 
         def activate_token
-            @activate_token ||= Token.find_by(value: token)
+            return @activate_token if defined? @activate_token
+            @activate_token = Token.find_by(value: token)
         end
 
         def user
-            @user ||= activate_token&.user
+            return @user if defined? @user
+            @user = activate_token&.user
         end
 
         def user_email_correctness
             return if !user.present?
-            return if user.email.include?(email&.downcase)
+            return if user.email.downcase.include?(email&.downcase)
             errors.add(:base, 'Provided email does not belongs to user!')
         end
 
@@ -65,9 +68,14 @@ class ConfirmationsController < ApplicationController
         end
 
         def token_used
-            return errors.add(:token, 'not found') unless activate_token.present?
+            return unless activate_token.present?
             return if activate_token.active?
             errors.add(:token, 'has already been used')
+        end
+
+        def token_presence
+            return if activate_token.present?
+            errors.add(:token, 'not found')
         end
 
     end

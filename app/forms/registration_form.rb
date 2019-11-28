@@ -44,6 +44,6 @@ class RegistrationForm
     end
 
     def token
-        @token ||= Token.create(user: user, value: SecureRandom.uuid)
+        @token ||= user.tokens.create
     end
 end

@@ -9,25 +9,21 @@ class InvitationForm
 
     def save
         return false unless valid?
-        #
+        ActiveRecord::Base.transaction { call }
         true
     rescue => e
-        #
+        # binding.pry
     end
 
     def call
-
+        InvitationMailer.call(invitation).deliver!
     end
 
 
     private
 
-    def send_email
-        # InvitationMailer.call(email, event, token.value).deliver!
-    end
-
-    def token
-        @token ||= Token.create(email: email.downcase, value: SecureRandom.uuid)
+    def invitation
+        @invitation ||= Invitation.create!(invitation_params)
     end
 
     def member_uniqueness
@@ -38,6 +34,21 @@ class InvitationForm
     def invitation_uniqueness
         return unless event.invitations.map {|invitation| invitation.email.downcase}.include?(email)
         errors.add(:base, "Invitation already sent")
+    end
+
+    def invitation_params
+        {
+            sender_id: current_user.id,
+            event_id: event.id,
+            recipient_id: find_recipient_id,
+            email: email,
+        }
+    end
+
+    def find_recipient_id
+        # binding.pry
+        User.find_by("lower(email) = ?", email.downcase)&.id
+        # User.includes(:memberships).where("lower(email) = ? AND memberships.event_id = ?", email.downcase, event.id).references(:memberships).first&.id
     end
 
 end

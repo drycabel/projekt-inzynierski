@@ -9,7 +9,7 @@
 <%= form_with url: sessions_path, local: true do |f| %>
     <div class="form-group">
         <%= f.label :email, 'E-mail' %>
-        <%= f.email_field :email, class: 'form-control', required: true %>
+        <%= f.email_field :email, value: params[:email], class: 'form-control', required: true %>
     </div>
     <div class="form-group">
         <%= f.label :password, 'Password' %>

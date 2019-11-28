@@ -9,8 +9,8 @@
         <% end %>
     </ul>
     <ul class="event-members-list">
-        <% @event.invitations.each do |invitation| %>
-            <li class="invitation"><%= invitation.email %></p>
+        <% @event.invitations.where(status: [10,30]).each do |invitation| %>
+            <li class="invitation #{invitation.status}"><%= invitation.email %></p>
         <% end %>
     </ul>
 </div>

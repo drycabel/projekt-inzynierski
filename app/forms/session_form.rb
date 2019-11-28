@@ -15,10 +15,7 @@ class SessionForm
     private
 
     def credentials_presence
-        return if email.present? && password.present? && user.present?
+        return if email.present? && password.present? && user.present? && user.confirmed?
         errors.add(:base, 'invalid credentials')
     end
-
-
-
 end
