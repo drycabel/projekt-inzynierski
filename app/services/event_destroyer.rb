@@ -13,7 +13,8 @@ class EventDestroyer
 
     def destroyed_successfully?
         return false unless validations_succeed?
-
+        # binding.pry
+        @members = event.users
         event.destroy!
         send_emails
 
@@ -25,8 +26,9 @@ class EventDestroyer
     end
 
     def send_emails
-        event.members.each do |m|
-            next if m.user_id == @current_user.id
+        # binding.pry
+        @members.each do |m|
+            next if m == @current_user
             EventsDestroyMailer.call(m.email, event).deliver!
         end
     end

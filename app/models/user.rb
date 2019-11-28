@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     BOOLAEN_METHODS = %w[new confirmed unconfirmed].freeze
 
-    has_many :tokens
+    has_many :tokens, as: :ownerable
     has_many :memberships
     has_many :events, through: :memberships
     has_many :own_events, foreign_key: :owner_id, class_name: "Event"
