@@ -8,7 +8,8 @@ class RegistrationsController < ApplicationController
        # binding.pry
        @form = RegistrationForm.new(registration_params)
        if @form.save
-        redirect_to root_path, notice: "Confirmation email was sent"
+        session[:user_id] = @form.user.id if @form.invited_user?
+        redirect_to @form.invitation_service.redirect_path || root_path, notice: @form.invited_user? ? "Account created and invitation to #{@form.invitation_service.event.title} accepted" : "Confirmation email was sent"
        else
         render :new
        end
@@ -17,7 +18,7 @@ class RegistrationsController < ApplicationController
     private
 
     def registration_params
-        params.permit(:email, :password)
+        params.require(:session).permit(:email, :password, :token)
     end
 
 end

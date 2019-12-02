@@ -7,13 +7,14 @@
 <% end %>
 
 <%= form_with url: registrations_path, local: true do |f| %>
+    <%= f.hidden_field "session[token]", value: params[:token] %>
     <div class="form-group">
         <%= f.label :email, 'E-mail' %>
-        <%= f.email_field :email, class: 'form-control', required: true %>
+        <%= f.email_field :email, name: "session[email]", value: params[:email], class: 'form-control', required: true %>
     </div>
     <div class="form-group">
         <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, class: 'form-control' %>
+        <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
     </div>
     <div class="form-group">
         <%= f.submit 'Sign-up', class: 'btn btn-primary' %>

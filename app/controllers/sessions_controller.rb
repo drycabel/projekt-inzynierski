@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
 
     def create
         @form = SessionForm.new(user_params)
-        if @form.valid?
-            # binding.pry
+        if @form.save
             session[:user_id] = @form.user.id
-            redirect_to root_path, notice: "Logged in"
+            redirect_to @form.invitation_service.redirect_path || root_path, notice: "Logged in"
         else
             render :new
+            # render "sessions/new.html.erb"
         end
     end
 
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     private
 
     def user_params
-        params.permit(:email, :password)
+        params.require(:session).permit(:email, :password, :token)
     end
 
     def redirect_logged_user
@@ -34,13 +34,10 @@ class SessionsController < ApplicationController
         if params[:token].present?
             service = InvitationConfirmationService.new(params[:token])
             if service.call
-                redirect_to event_path(service.event.id) and return
+                redirect_to event_path(service.event) and return
             else
                 redirect_to events_path, notice: "You are already logged in"
             end
         end
-
     end
-
-
 end
