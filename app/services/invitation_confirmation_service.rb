@@ -3,15 +3,23 @@ class InvitationConfirmationService
     def initialize(token_value, user = nil)
         @user = user
         @token_value = token_value
+        @success = false
     end
 
     def call
         return false unless token.present?
-        event.memberships.create!(user_id: (invitation.recipient_id || user&.id))
+        event.memberships.create!(user_id: (invitation.recipient_id || @user&.id))
         invitation.accepted!
-        true
+        inactivate_tokens
+        @success = true
     rescue
         false
+    end
+
+    def redirect_path
+        return nil if !@success || !token || !event
+        # "/events/#{event.id}"
+        Rails.application.routes.url_helpers.event_path(event)
     end
 
     def token
@@ -27,6 +35,10 @@ class InvitationConfirmationService
     end
 
     private
+
+    def inactivate_tokens
+        invitation.tokens.update_all(active: false)
+    end
 
     def invitation
         @invitation ||= token&.ownerable
