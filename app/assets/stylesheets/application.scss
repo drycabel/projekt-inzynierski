@@ -31,14 +31,14 @@
 
  ul.event-members-list {
     li {
-        color: blue;
+        color: limegreen;
 
         &.invitation-sent{
-            color: red;
+            color: grey;
         }
 
         &.invitation-refused{
-            color: grey;
+            color: red;
         }
     }
  }
