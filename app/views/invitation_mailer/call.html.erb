@@ -1,6 +1,6 @@
 <h1>Invitation</h1>
-<%= link_to "Click here to accept invitation", @accept_url %>
-<%= link_to "Click here to refuse invitation", @refuse_url %>
+<p><%= link_to "Click here to accept invitation", @accept_url %></p>
+<p><%= link_to "Click here to refuse invitation", @refuse_url %></p>
 <% if @with_invitation_notice %>
     <p>We are sorry but yours invitation is not awaiable anymore</p>
 <% end %>
