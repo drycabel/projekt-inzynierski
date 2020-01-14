@@ -13,19 +13,67 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
+@import "breakpoints";
+@import "containers";
+@import "events";
+@import "colors";
 
+.nav-link {
+    color: $lightgreen !important;
+}
+
+.navbar-brand {
+    color: $lightgreen !important;
+    font-weight: bold;
+    text-shadow: 3px 7px 5px rgba(124,168,206,0.7);
+}
+
+.nav-extension {
+    border: 1px solid $lightgreen;
+    border-radius: 10px;
+}
  .custom-cards {
     display: grid;
     // grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    @media screen and (max-width: '767px') {
+    @media screen and (max-width: $medium) {
         grid-template-columns: 1fr 1fr;
     }
-    @media screen and (max-width: '479px') {
+    @media screen and (max-width: $small) {
         grid-template-columns: 1fr;
+    }
+
+
+    .card {
+        border: 1px solid rgba(18, 160, 179, 0.3);
+
+        .card-body {
+            padding-bottom: 70px;
+
+            .creator-container {
+                position: absolute;
+                left: 1.25rem;
+                bottom: -10px;
+                width: 90%;
+
+                .creator-label {
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: $lightgreen;
+                }
+                .creator-email {
+                    font-size: 12px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    color: $lightgreen;
+                    font-weight: 300;
+                }
+            }
+        }
     }
  }
 

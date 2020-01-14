@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-extension">
+    <%= link_to 'Web App', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
+        <% if current_user.present? %>
+            <li class="nav-item">
+            <%= link_to "Events", events_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Log out", sessions_path,  class: 'nav-link', method: :delete %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Logged as: #{current_user.email}", user_path(current_user), class: 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+            <%= link_to "Sign in", new_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Sign up", new_registration_path, class: 'nav-link' %>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+    </div>
+</nav>

@@ -1,22 +1,44 @@
-<h1>Sign up</h1>
+<div class="registration-container">
+    <h1>Sign up</h1>
 
-<% if @form.errors.present? %>
-    <%- @form.errors.full_messages.each do |msg| %>
-        <p class="alert alert-danger"><%= msg %></p>
+    <% if @form.errors.present? %>
+        <%- @form.errors.full_messages.each do |msg| %>
+            <p class="alert alert-danger"><%= msg %></p>
+        <% end %>
     <% end %>
-<% end %>
 
-<%= form_with url: registrations_path, local: true do |f| %>
-    <%= f.hidden_field "session[token]", value: params[:token] %>
-    <div class="form-group">
-        <%= f.label :email, 'E-mail' %>
-        <%= f.email_field :email, name: "session[email]", value: params[:email], class: 'form-control', required: true %>
-    </div>
-    <div class="form-group">
-        <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= f.submit 'Sign-up', class: 'btn btn-primary' %>
-    </div>
-<% end %>
+    <%= form_with url: registrations_path, local: true do |f| %>
+        <%= f.hidden_field "session[token]", value: params[:token] %>
+        <div class="form-group">
+            <%= f.label :email, 'E-mail' %>
+            <%= f.email_field :email, name: "session[email]", value: params[:email], class: 'form-control', required: true %>
+        </div>
+        <div class="form-group">
+            <%= f.label :name, 'Name' %>
+            <%= f.text_field :name, name: "session[name]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :surname, 'Surname' %>
+            <%= f.text_field :surname, name: "session[surname]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :age, 'Age' %>
+            <%= f.text_field :age, name: "session[age]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :short_bio, 'Short biography' %>
+            <%= f.text_area :short_bio, name: "session[short_bio]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :age, 'Age' %>
+            <%= f.date_field :age, name: "session[age]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password, 'Password' %>
+            <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.submit 'Sign-up', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>
