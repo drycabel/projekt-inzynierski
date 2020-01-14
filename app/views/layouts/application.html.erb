@@ -7,77 +7,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application'  %>
   </head>
 
   <body>
+    <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/alerts" %>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <%= link_to 'Web App', root_path, class: 'navbar-brand' %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <ul class="navbar-nav mr-auto">
-            <% if current_user.present? %>
-              <li class="nav-item">
-                <%= link_to "Events", events_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log out", sessions_path,  class: 'nav-link', method: :delete %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Logged as: #{current_user.email}", user_path(current_user), class: 'nav-link' %>
-              </li>
-              <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Logged as:
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li> -->
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Sign in", new_session_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Sign up", new_registration_path, class: 'nav-link' %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-
-        <div class="col-md-9">
-          <% if alert.present? %>
-            <div class="container">
-              <div class="alert alert-danger" role="alert">
-                <%= alert %>
-              </div>
-            </div>
-          <% end %>
-
-          <% if notice.present? %>
-            <div class="container">
-              <div class="alert alert-success" role="alert">
-                <%= notice %>
-              </div>
-            </div>
-          <% end %>
-
-          <%= yield %>
-        </div>
-    </div>
-  </div>
+    <%= yield %>
   </body>
 
+  <%= javascript_pack_tag 'application'  %>
 </html>
+

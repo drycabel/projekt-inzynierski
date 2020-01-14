@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+    has_one :address, as: :addressable
     has_many :invitations
     has_many :memberships, dependent: :destroy
     has_many :users, through: :memberships

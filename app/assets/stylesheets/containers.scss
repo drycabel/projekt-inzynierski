@@ -1,0 +1,22 @@
+@import "breakpoints";
+
+.registration-container {
+   margin: 20px auto;
+   max-width: 900px;
+
+   @media screen and (max-width: $large) {
+    max-width: 700px;
+   }
+
+   @media screen and (max-width: $medium) {
+    max-width: 400px;
+   }
+   @media screen and (max-width: $small) {
+    max-width: 340px;
+   }
+}
+
+.events-container {
+    margin: 20px auto;
+    width: 90%;
+}

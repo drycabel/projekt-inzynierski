@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
     BOOLAEN_METHODS = %w[new confirmed unconfirmed].freeze
 
+    has_one :address, as: :addressable
     has_many :tokens, as: :ownerable
     has_many :memberships
     has_many :events, through: :memberships

@@ -1,0 +1,20 @@
+@import "./colors";
+
+.events-subheader {
+    font-size: 14px;
+    font-weight: 300;
+    border-bottom: 1px solid $lightgreen;
+    padding-bottom: 10px;
+
+    &.blue {
+        color: $lightgreen;
+    }
+}
+
+.events-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $blue;
+    text-shadow: $text-shadow;
+}
