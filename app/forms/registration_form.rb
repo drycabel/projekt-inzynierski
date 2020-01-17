@@ -1,7 +1,7 @@
 class RegistrationForm
     include ActiveModel::Model
 
-    attr_accessor :email, :password, :token, :name, :surname, :age, :short_bio
+    attr_accessor :email, :password, :token, :name, :surname, :birth_date, :short_bio
 
     validates :email, :password, presence: true
     #validacja na haslo min 8 znakow
@@ -56,7 +56,7 @@ class RegistrationForm
     end
 
     def create_user
-        @user = User::New.create!(email: email, password: password, name: name, surname: surname, age: age, short_bio: short_bio)
+        @user = User::New.create!(email: email, password: password, name: name, surname: surname, birth_date: birth_date, short_bio: short_bio)
     end
 
     def token_object
