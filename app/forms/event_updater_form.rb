@@ -1,14 +1,15 @@
 class EventUpdaterForm
     include ActiveModel::Model
 
-    attr_accessor :title, :description, :owner, :event_id
+    attr_accessor :title, :description, :owner, :event_id, :event_date, :event_time, :street, :city, :province, :zip
     validates :title, :description, :owner, :event_id, presence: true
     validate :title_uniqueness_for_owner
     validate :event_belongs_to_owner
 
     def save
         return false unless valid?
-        event.update!(title: title, description: description)
+        event.update!(title: title, description: description, event_date: event_date, event_time: event_time)
+        event.address.present? ? event.address.update!(city: city, street: street, province: province, zip: zip) : Address.create!(city: city, street: street, province: province, zip: zip, addressable: event)
         true
     rescue => e
         errors.add(:base, "Something went wrong - #{e.inspect}")

@@ -22,16 +22,12 @@
             <%= f.text_field :surname, name: "session[surname]", class: 'form-control' %>
         </div>
         <div class="form-group">
-            <%= f.label :age, 'Age' %>
-            <%= f.text_field :age, name: "session[age]", class: 'form-control' %>
+            <%= f.label :birth_date, 'Birth date' %>
+            <%= f.date_field :birth_date, name: "session[birth_date]", class: 'form-control' %>
         </div>
         <div class="form-group">
             <%= f.label :short_bio, 'Short biography' %>
             <%= f.text_area :short_bio, name: "session[short_bio]", class: 'form-control' %>
-        </div>
-        <div class="form-group">
-            <%= f.label :age, 'Age' %>
-            <%= f.date_field :age, name: "session[age]", class: 'form-control' %>
         </div>
         <div class="form-group">
             <%= f.label :password, 'Password' %>

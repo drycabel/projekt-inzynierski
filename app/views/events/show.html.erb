@@ -1,32 +1,36 @@
-<h3><%= @event.title %></h3>
-<p><%= @event.description %></p>
-<hr>
-<div>
-    <h4>Event members</h4>
-    <ul class="event-members-list">
-        <% @event.users.each do |user| %>
-            <li><%= user.email %></p>
-        <% end %>
-    </ul>
-    <ul class="event-members-list">
-        <% @event.invitations.where(status: [10,30]).each do |invitation| %>
-            <li class="invitation-<%= invitation.status %>"><%= invitation.email %></p>
-        <% end %>
-    </ul>
-</div>
-<hr>
-<div>
-    <h4>Invite to this event</h4>
-    <%= form_with url: event_invitations_path(@event), method: :post, local: true do |f| %>
-    <div class="form-group">
-        <%= f.label :email, 'Email' %>
-        <%= f.email_field :email, class: 'form-control', required: true %>
+<div class="event-form-container">
+    <h1 class="events-header">Event details</h1>
+    <h3><%= @event.title %></h3>
+    <p><%= @event.description %></p>
+
+    <hr>
+    <div>
+        <h4>Event members</h4>
+        <ul class="event-members-list">
+            <% @event.users.each do |user| %>
+                <li><%= user.email %></p>
+            <% end %>
+        </ul>
+        <ul class="event-members-list">
+            <% @event.invitations.where(status: [10,30]).each do |invitation| %>
+                <li class="invitation-<%= invitation.status %>"><%= invitation.email %></p>
+            <% end %>
+        </ul>
     </div>
-    <div class="form-group">
-        <%= f.submit "Invite", class: 'btn btn-primary' %>
+    <hr>
+    <div>
+        <h4>Invite to this event</h4>
+        <%= form_with url: event_invitations_path(@event), method: :post, local: true do |f| %>
+        <div class="form-row">
+            <div class="form-group col-md-10">
+                <%= f.email_field :email, placeholder: "Email", class: 'form-control', required: true%>
+            </div>
+            <div class="form-group col-md-2">
+                <%= f.submit "Invite", class: 'btn btn-primary' %>
+            </div>
+    <% end %>
     </div>
-<% end %>
+    <br>
+    <%= link_to "Back", events_path, class:"btn btn-primary" %>
+    <%# dodać join button %>
 </div>
-<br>
-<%= link_to "Back", events_path, class:"btn btn-primary" %>
-<%# dodać join button %>

@@ -1,7 +1,7 @@
 class EventCreatorForm
     include ActiveModel::Model
 
-    attr_accessor :title, :description, :current_user
+    attr_accessor :title, :description, :current_user, :event_date, :event_time, :street, :city, :province, :zip
     validates :title, :description, :current_user, presence: true
     validate :title_uniqueness_for_owner
 
@@ -9,6 +9,7 @@ class EventCreatorForm
         return false unless valid?
         ActiveRecord::Base.transaction do
             event.save!
+            Address.create!(city: city, street: street, province: province, zip: zip, addressable: event)
             Membership.create!(user: current_user, event: event, join_date: Time.now, role: 20)
         end
         true
@@ -19,7 +20,7 @@ class EventCreatorForm
     end
 
     def event
-        @event ||= Event.new(title: title, description: description, owner: current_user)
+        @event ||= Event.new(title: title, description: description, event_date: event_date, event_time: event_time, owner: current_user)
     end
 
     private
