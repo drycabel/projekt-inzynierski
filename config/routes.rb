@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resource :sessions, only: [:destroy]
   resources :confirmations, only: [:show], param: :token
   resources :invitations_refuse, only: [:show], param: :token_value
-  resources :users, only: [:show, :destroy, :edit]
+  resources :users, only: [:show, :destroy, :edit, :update] do
+    resource :password, controller: :passwords, only: [:edit, :update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
