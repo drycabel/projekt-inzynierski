@@ -20,7 +20,11 @@ class EventsController < ApplicationController
     end
 
     def edit
-        @form = EventUpdaterForm.new(event_id: params[:id])
+        if Event.exists?(params[:id])
+            @form = EventUpdaterForm.new(event_id: params[:id])
+        else
+            redirect_to events_path, alert: "Event with id: #{params[:id]} doesn't exist"
+        end
     end
 
     def update
@@ -33,7 +37,10 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = Event.find(params[:id])
+        if @event = Event.find_by_id(params[:id])
+        else
+            redirect_to events_path, alert: "Event with id: #{params[:id]} doesn't exist"
+        end
     end
 
     def destroy
