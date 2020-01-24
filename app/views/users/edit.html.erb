@@ -1,5 +1,5 @@
 <div class="event-form-container">
-    <h1 class="events-header">Edit user data</h1>
+    <%= render partial: '/shared/page_header', locals: { header: 'Edit Prifiles Data', subheader: 'This is the place where you can modify you own data.'} %>
 
     <%= render partial: 'form', locals: { button_name: 'Save', action_path: user_path(@form.user.id), action_method: :put} %>
 </div>

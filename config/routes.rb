@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create]
-  resource :sessions, only: [:destroy]
+  resource :sessions, only: [:destroy] do
+    resource :reset_password, controller: :reset_passwords, only: [:new, :create, :edit, :update]
+  end
   resources :confirmations, only: [:show], param: :token
   resources :invitations_refuse, only: [:show], param: :token_value
   resources :users, only: [:show, :destroy, :edit, :update] do

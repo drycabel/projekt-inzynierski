@@ -1,5 +1,5 @@
 <div class="registration-container">
-    <h1>Sign up</h1>
+    <%= render partial: '/shared/page_header', locals: { header: 'Sign Up', subheader: 'This is the place where you can create your own account'} %>
 
     <% if @form.errors.present? %>
         <%- @form.errors.full_messages.each do |msg| %>
@@ -34,7 +34,11 @@
             <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
         </div>
         <div class="form-group">
-            <%= f.submit 'Sign-up', class: 'btn btn-primary' %>
+            <%= f.label :password_re_type, 'Re-Type Password' %>
+            <%= f.password_field :password_re_type, name: "session[password_re_type]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.submit 'Sign-up', class: 'btn btn-outline-primary btn-block' %>
         </div>
     <% end %>
 </div>

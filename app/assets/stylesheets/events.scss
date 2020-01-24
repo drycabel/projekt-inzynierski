@@ -18,3 +18,30 @@
     color: $blue;
     text-shadow: $text-shadow;
 }
+
+.event-details-container {
+    margin: 20px 0;
+    .event-group {
+        margin-bottom: 5px;
+
+        &.inline-two {
+            width: 49%;
+        }
+
+        &.inline-three {
+            width: 30%;
+        }
+
+        .event-label {
+            font-weight: bold;
+            color: $lightgreen;
+            border-bottom: 1px solid;
+        }
+
+        .event-value {
+            padding: 10px;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
