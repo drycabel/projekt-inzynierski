@@ -1,9 +1,10 @@
 class RegistrationForm
     include ActiveModel::Model
 
-    attr_accessor :email, :password, :token, :name, :surname, :birth_date, :short_bio
+    attr_accessor :email, :password, :password_re_type, :token, :name, :surname, :birth_date, :short_bio
 
-    validates :email, :password, presence: true
+    validates :email, :password, :password_re_type, presence: true
+    validate :re_type_password_must_be_the_same
     #validacja na haslo min 8 znakow
     # validates :email_uniq
 
@@ -61,5 +62,10 @@ class RegistrationForm
 
     def token_object
         @token_object ||= user.tokens.create
+    end
+
+    def re_type_password_must_be_the_same
+        return if password == password_re_type
+        errors.add(:base, "The re-type password must be the same")
     end
 end

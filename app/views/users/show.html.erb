@@ -1,32 +1,40 @@
 <div class="registration-container">
-    <h1 class="events-header">User data</h1>
+    <%= render partial: '/shared/page_header', locals: { header: 'User Profile', subheader: 'This is the place where you can manage your own profile.'} %>
+
     <%- usr = UserDecorator.new(@user) %>
 
-    <div>
-        <div class="row">
-            <div class="column usr-column"><h5>Email:</h5></div>
-            <div class="column usr-column"><%= usr.email %></div>
+    <div class="usr-profile-container">
+        <div class="usr-group">
+            <div class="usr-label">Email:</div>
+            <div class="usr-value"><%= usr.email %></div>
         </div>
-        <div class="row">
-            <div class="column usr-column"><h5>Name:</h5></div>
-            <div class="column usr-column"><%= usr.name %></div>
-            <div class="column usr-column"><h5>Surname:</h5></div>
-            <div class="column usr-column"><%= usr.surname %></div>
+
+        <div class="d-flex justify-content-between">
+            <div class="usr-group inline-two">
+                <div class="usr-label">Name:</div>
+                <div class="usr-value"><%= usr.name %></div>
+            </div>
+
+            <div class="usr-group inline-two">
+                <div class="usr-label">Surname:</div>
+                <div class="usr-value"><%= usr.surname %></div>
+            </div>
         </div>
-        <div class="row">
-            <div class="column usr-column"><h5>Birth date:</h5></div>
-            <div class="column usr-column"><%= usr.birth_date %></div>
+
+        <div class="usr-group">
+            <div class="usr-label">Birth date:</div>
+            <div class="usr-value"><%= usr.birth_date %></div>
         </div>
-        <div class="row">
-            <div class="column usr-column"><h5>Short biography:</h5></div>
-            <div class="column usr-column"><%= usr.short_bio %></div>
+
+        <div class="usr-group">
+            <div class="usr-label">Short biography:</div>
+            <div class="usr-value"><%= usr.short_bio %></div>
         </div>
     </div>
+
     <% if @user.id == current_user.id %>
-        <%= link_to "Edit user data", edit_user_path(@user), class: "btn btn-outline-primary" %>
-        <%= link_to "Change password", edit_user_password_path(@user), class: "btn btn-outline-warning" %>
-        <%= link_to "Destroy account", user_path(@user), method: :delete, data: {confirm: @destroy_message}, class: "btn btn-outline-danger" %>
+        <%= link_to "Edit user data", edit_user_path(@user), class: "btn btn-outline-primary btn-block" %>
+        <%= link_to "Change password", edit_user_password_path(@user), class: "btn btn-outline-warning btn-block" %>
+        <%= link_to "Destroy account", user_path(@user), method: :delete, data: {confirm: @destroy_message}, class: "btn btn-outline-danger btn-block" %>
     <% end %>
-
-
 </div>

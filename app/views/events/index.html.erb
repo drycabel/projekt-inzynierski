@@ -1,5 +1,5 @@
 <div class="events-container">
-    <h1 class="events-header">Events list!</h1>
+    <%= render partial: '/shared/page_header', locals: { header: 'Events List', subheader: 'There are events created by users.'} %>
     <div class="events-subheader blue mb-3">You can add your own one:<%= link_to "Add event", new_event_path, class: 'btn btn-outline-info btn-sm ml-3' %></div>
 
     <%= render partial: 'events', locals: {collection: @events} %>

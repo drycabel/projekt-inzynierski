@@ -1,0 +1,16 @@
+<div class="registration-container">
+    <%= render partial: '/shared/page_header', locals: { header: 'Reset Password', subheader: 'This is the place where you can reset your password.'} %>
+
+    <%= form_with url: sessions_reset_password_path, method: :post, local: true do |f| %>
+        <div class="form-group">
+            <%= f.label :email, 'E-mail' %>
+            <%= f.email_field :email, name: "session[email]", value: params[:email], class: 'form-control', required: true %>
+        </div>
+        <span class="form-text small text-muted">Password reset instructions will be sent to this email address.</span>
+        <br>
+        <div class="form-group">
+            <%= f.submit 'Reset', class: 'btn btn-outline-primary btn-block' %>
+        </div>
+    <% end %>
+
+</div>

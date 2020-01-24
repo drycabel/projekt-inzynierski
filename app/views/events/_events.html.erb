@@ -5,17 +5,17 @@
             <div class="card-body">
                 <h5 class="card-title"><%= event_decorator.title %></h5>
                 <p class="card-text"><%= event_decorator.description %></p>
-                <div class="d-flex justify-content-between">
-                    <%= link_to "Details", event_path(event), class: "btn btn-outline-info btn-sm" %>
+                <div class="">
+                    <%= link_to "Details", event_path(event), class: "btn btn-outline-info btn-sm btn-block" %>
                     <% if event.can_i_manage_event?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
-                        <%= link_to "Edit", edit_event_path(event), class: "btn btn-outline-primary btn-sm" %>
-                        <%= link_to "Destroy", event_path(event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-outline-danger btn-sm" %>
+                        <%= link_to "Edit", edit_event_path(event), class: "btn btn-outline-primary btn-sm btn-block" %>
+                        <%= link_to "Destroy", event_path(event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-outline-danger btn-sm btn-block" %>
                     <% end %>
                     <% if event.can_i_join?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
-                        <%= link_to "Join", event_join_event_path(event), method: :post , class: "btn btn-outline-primary btn-sm" %>
+                        <%= link_to "Join", event_join_event_path(event), method: :post , class: "btn btn-outline-primary btn-sm btn-block" %>
                     <% end %>
                     <% if event.can_i_quit?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
-                        <%= link_to "Quit", event_quit_event_path(event), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-warning btn-sm" %>
+                        <%= link_to "Quit", event_quit_event_path(event), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-warning btn-sm btn-block" %>
                     <% end %>
                 </div>
                 <div class="creator-container">

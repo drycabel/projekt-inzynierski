@@ -1,5 +1,5 @@
 <div class="event-form-container">
-    <h1 class="events-header">New Event</h1>
+    <%= render partial: '/shared/page_header', locals: { header: 'New Event', subheader: 'This is the place where you can create event.'} %>
 
     <%= render partial: 'form', locals: { button_name: 'Create', action_path: events_path, action_method: :post} %>
 </div>

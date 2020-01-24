@@ -19,6 +19,7 @@
 @import "events";
 @import "colors";
 @import "users";
+@import "components";
 
 .nav-link {
     color: $lightgreen !important;
@@ -27,7 +28,7 @@
 .navbar-brand {
     color: $lightgreen !important;
     font-weight: bold;
-    text-shadow: 3px 7px 5px rgba(124,168,206,0.7);
+    // text-shadow: 3px 7px 5px rgba(124,168,206,0.7);
 }
 
 .nav-extension {

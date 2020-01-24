@@ -1,36 +1,97 @@
 <div class="event-form-container">
-    <h1 class="events-header">Event details</h1>
-    <h3><%= @event.title %></h3>
-    <p><%= @event.description %></p>
+    <%= render partial: '/shared/page_header', locals: { header: 'Event Details', subheader: 'This is the place where you can find out details about the event.'} %>
+    <div class="event-details-container">
+        <div class="event-group">
+            <div class="event-label">Title:</div>
+            <div class="event-value"><%= @event.title %></div>
+        </div>
+
+        <div class="event-group">
+            <div class="event-label">Description:</div>
+            <div class="event-value"><%= @event.description %></div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="event-group inline-two">
+                <div class="event-label">Event Date:</div>
+                <div class="event-value"><%= @event&.event_date %></div>
+            </div>
+
+            <div class="event-group inline-two">
+                <div class="event-label">Event Time:</div>
+                <div class="event-value"><%= @event&.event_time&.strftime( "%H:%M" ) %></div>
+            </div>
+        </div>
+
+        <div class="event-group">
+            <div class="event-label">Street:</div>
+            <div class="event-value"><%= @event&.address&.street %></div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="event-group inline-three">
+                <div class="event-label">City:</div>
+                <div class="event-value"><%= @event&.address&.city %></div>
+            </div>
+
+            <div class="event-group inline-three">
+                <div class="event-label">Province:</div>
+                <div class="event-value"><%= @event&.address&.province %></div>
+            </div>
+            <div class="event-group inline-three">
+                <div class="event-label">Zip Code:</div>
+                <div class="event-value"><%= @event&.address&.zip %></div>
+            </div>
+        </div>
+
+    </div>
 
     <hr>
     <div>
         <h4>Event members</h4>
-        <ul class="event-members-list">
+        <br>
+        <ul class="list-group">
             <% @event.users.each do |user| %>
-                <li><%= user.email %></p>
+                <li class="list-group-item list-group-item-success"><%= user.email %>
             <% end %>
-        </ul>
-        <ul class="event-members-list">
             <% @event.invitations.where(status: [10,30]).each do |invitation| %>
-                <li class="invitation-<%= invitation.status %>"><%= invitation.email %></p>
+                <%- invitation = InvitationDecorator.new(invitation) %>
+                <li class="list-group-item list-group-item-<%= invitation.boostrap_color_class %>"><%= invitation.email %>
             <% end %>
         </ul>
+
+        <div class="event-members-legend">
+            <div class="legend-group">
+                <div class="legend-color success"></div>
+                <div class="legend-title">Members</div>
+            </div>
+
+            <div class="legend-group">
+                <div class="legend-color danger"></div>
+                <div class="legend-title">Invitations - refused</div>
+            </div>
+
+            <div class="legend-group">
+                <div class="legend-color dark"></div>
+                <div class="legend-title">Invitations - sent</div>
+            </div>
+        </div>
     </div>
     <hr>
     <div>
         <h4>Invite to this event</h4>
+        <br>
         <%= form_with url: event_invitations_path(@event), method: :post, local: true do |f| %>
         <div class="form-row">
             <div class="form-group col-md-10">
                 <%= f.email_field :email, placeholder: "Email", class: 'form-control', required: true%>
             </div>
             <div class="form-group col-md-2">
-                <%= f.submit "Invite", class: 'btn btn-primary' %>
+                <%= f.submit "Invite", class: 'btn btn-outline-primary btn-block' %>
             </div>
     <% end %>
     </div>
     <br>
-    <%= link_to "Back", events_path, class:"btn btn-primary" %>
+    <%= link_to "Back", events_path, class:"btn btn-outline-primary btn-block" %>
     <%# dodać join button %>
 </div>
