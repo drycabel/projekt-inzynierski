@@ -1,0 +1,7 @@
+<div>
+    <h1>Reset password mail</h1>
+    <br>
+    <p>Click in the link below to go to the website with the password reset form.</p>
+
+    <%= link_to 'Click to reset', edit_sessions_reset_password_url(token_value: @token, email: @email) %>
+</div>

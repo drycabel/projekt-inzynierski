@@ -1,10 +1,11 @@
 class RegistrationForm
     include ActiveModel::Model
 
-    attr_accessor :email, :password, :password_re_type, :token, :name, :surname, :birth_date, :short_bio
+    attr_accessor :email, :password, :password_confirmation, :token, :name, :surname, :birth_date, :short_bio
 
-    validates :email, :password, :password_re_type, presence: true
-    validate :re_type_password_must_be_the_same
+    validates :email, :password, :password_confirmation, presence: true
+    validates :password, confirmation: { case_sensitive: true }
+
     #validacja na haslo min 8 znakow
     # validates :email_uniq
 
@@ -40,6 +41,7 @@ class RegistrationForm
         create_user unless user.present?
         @user = user.unconfirm if user.new?
         @invited_user = invitation_service.call
+        # binding.pry
         if invited_user?
             user.confirm
         else
@@ -49,7 +51,7 @@ class RegistrationForm
 
     def existed_user
         return @existed_user if defined? @existed_user
-        @existed_user = User.find_by("lower(email) = ?", email)
+        @existed_user = User.find_by("lower(email) = ?", email.downcase)
     end
 
     def inactivate_tokens
@@ -64,8 +66,4 @@ class RegistrationForm
         @token_object ||= user.tokens.create
     end
 
-    def re_type_password_must_be_the_same
-        return if password == password_re_type
-        errors.add(:base, "The re-type password must be the same")
-    end
 end

@@ -20,7 +20,7 @@
                 </div>
                 <div class="creator-container">
                     <div class="creator-label">Creator:</div>
-                    <p class="creator-email"><%= event_decorator.owner_email %></p>
+                    <p class="creator-email"><%= link_to event_decorator.owner_email, user_path(event.owner_id) %></p>
                 </div>
             </div>
         </div>

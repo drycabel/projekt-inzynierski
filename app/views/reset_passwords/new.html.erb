@@ -1,6 +1,10 @@
 <div class="registration-container">
     <%= render partial: '/shared/page_header', locals: { header: 'Reset Password', subheader: 'This is the place where you can reset your password.'} %>
-
+    <% if @form.errors.present? %>
+        <%- @form.errors.full_messages.each do |msg| %>
+            <p class="alert alert-danger"><%= msg %></p>
+        <% end %>
+    <% end %>
     <%= form_with url: sessions_reset_password_path, method: :post, local: true do |f| %>
         <div class="form-group">
             <%= f.label :email, 'E-mail' %>

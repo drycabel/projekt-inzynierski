@@ -38,6 +38,7 @@ class EventsController < ApplicationController
 
     def show
         if @event = Event.find_by_id(params[:id])
+            @event_roles = Membership.where(event_id: @event.id, user_id: current_user.id).each_with_object({}) {|member, result| result[member.event_id] = member.role}
         else
             redirect_to events_path, alert: "Event with id: #{params[:id]} doesn't exist"
         end
