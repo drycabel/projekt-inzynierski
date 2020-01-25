@@ -18,7 +18,7 @@ class SessionForm
     end
 
     def user
-        @user ||= User.find_by(email: email)&.authenticate(password)
+        @user ||= User.find_by("lower(email) = ?", email.downcase)&.authenticate(password)
     end
 
     def invitation_service
@@ -35,7 +35,9 @@ class SessionForm
 
     private
 
-
+    def downcase_email
+        email.downcase!
+    end
 
     def credentials_presence
         return if email.present? && password.present? && user.present? && user.confirmed?

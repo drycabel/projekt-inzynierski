@@ -11,7 +11,7 @@
         <%= f.hidden_field "session[invitation_refused]", value: params[:invitation_refused] %>
         <div class="form-group">
             <%= f.label :email, 'E-mail' %>
-            <%= f.email_field :email, name: "session[email]", value: params[:email], class: 'form-control', required: true %>
+            <%= f.email_field :email, name: "session[email]", value: params[:email] || @form.email, class: 'form-control', required: true %>
         </div>
         <div class="form-group">
             <%= f.label :password, 'Password' %>

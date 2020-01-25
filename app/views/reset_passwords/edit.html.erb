@@ -1,0 +1,21 @@
+<div class="event-form-container">
+    <%= render partial: '/shared/page_header', locals: { header: 'Reset Password', subheader: 'This is the place where you can reset your password.'} %>
+    <%= render partial: 'shared/errors', locals: {object: @form} %>
+    <%= form_with url: sessions_reset_password_path, method: :put, local: true do |f| %>
+        <%= f.hidden_field :token_value, name: "session[token_value]", value: params[:token_value] %>
+        <%= f.hidden_field :email, name: "session[email]", value: params[:email] %>
+        <div class="form-group">
+            <%= f.label :password, 'New password' %>
+            <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation, 'Re-type New password' %>
+            <%= f.password_field :password_confirmation, name: "session[password_confirmation]", class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.submit "Save", class: 'btn btn-outline-primary btn-block' %>
+        </div>
+
+    <% end %>
+
+</div>

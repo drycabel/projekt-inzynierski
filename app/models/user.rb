@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     include Morphable
 
+    before_save :downcase_email
+
     BOOLAEN_METHODS = %w[new confirmed unconfirmed].freeze
 
     has_one :address, as: :addressable
@@ -17,5 +19,9 @@ class User < ApplicationRecord
         define_method "#{method_name}?" do
             false
         end
+    end
+
+    def downcase_email
+        self.email.downcase!
     end
 end
