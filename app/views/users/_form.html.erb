@@ -2,25 +2,25 @@
 <%= form_with url: action_path, method: action_method, local: true do |f| %>
     <div class="form-group">
         <%= f.label :email, 'Email' %>
-        <%= f.email_field :email, name: "session[email]", value: @form.user.email, class: 'form-control d-block', readonly: true %>
+        <%= f.email_field :email, name: "session[email]", value: @form&.email || @form.user.email, class: 'form-control d-block', readonly: true %>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <%= f.label :name, 'Name' %>
-            <%= f.text_field :name, name: "session[name]", value: @form.user&.name, class: 'form-control' %>
+            <%= f.text_field :name, name: "session[name]", value: @form&.name || @form.user&.name, class: 'form-control' %>
         </div>
         <div class="form-group col-md-6">
             <%= f.label :surname, 'Surname' %>
-            <%= f.text_field :surname, name: "session[surname]", value: @form.user&.surname, class: 'form-control' %>
+            <%= f.text_field :surname, name: "session[surname]", value: @form&.surname || @form.user&.surname, class: 'form-control' %>
         </div>
     </div>
     <div class="form-group">
             <%= f.label :birth_date, 'Birth date' %>
-            <%= f.date_field :birth_date, name: "session[birth_date]", value: @form.user&.birth_date, class: 'form-control' %>
+            <%= f.date_field :birth_date, name: "session[birth_date]", value: @form&.birth_date || @form.user&.birth_date, class: 'form-control' %>
     </div>
     <div class="form-group">
         <%= f.label :short_bio, 'Short biography' %>
-        <%= f.text_area :short_bio, name: "session[short_bio]", value: @form.user&.short_bio, class: 'form-control' %>
+        <%= f.text_area :short_bio, name: "session[short_bio]", value: @form&.short_bio || @form.user&.short_bio, class: 'form-control' %>
     </div>
     <div class="form-group">
         <%= f.submit button_name, class: 'btn btn-outline-primary btn-block' %>
