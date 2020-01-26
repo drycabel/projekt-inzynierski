@@ -8,13 +8,14 @@ class EventDestroyer
 
     def event
         return @event if defined? @event
-        @event = Event.find_by(id: @event_id)
+        @event = Event.find_by_id(@event_id)
     end
 
     def destroyed_successfully?
         return false unless validations_succeed?
         # binding.pry
         @members = event.users
+        # binding.pry
         event.destroy!
         send_emails
 

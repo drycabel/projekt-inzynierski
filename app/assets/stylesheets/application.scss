@@ -53,7 +53,11 @@
         border: 1px solid rgba(18, 160, 179, 0.3);
 
         .card-body {
-            padding-bottom: 70px;
+            // padding-bottom: 70px;
+
+            .card-text {
+                padding-left: 20px;
+            }
 
             .creator-container {
                 position: absolute;

@@ -9,7 +9,8 @@ class EventCreatorForm
         return false unless valid?
         ActiveRecord::Base.transaction do
             event.save!
-            Address.create!(city: city, street: street, province: province, zip: zip, addressable: event)
+            address.save!
+            # Address.create!(city: city, street: street, province: province, zip: zip, addressable: event)
             Membership.create!(user: current_user, event: event, join_date: Time.now, role: 20)
         end
         true
@@ -17,6 +18,10 @@ class EventCreatorForm
     rescue => e
         errors.add(:base, "Something went wrong - #{e.inspect}")
         false
+    end
+
+    def address
+        @address ||= Address.new(city: city, street: street, province: province, zip: zip, addressable: event)
     end
 
     def event

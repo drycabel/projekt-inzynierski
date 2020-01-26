@@ -17,6 +17,10 @@ class EventUpdaterForm
         false
     end
 
+    def address
+        @address ||= event.address
+    end
+
     def event
         @event ||= Event.find(event_id)
     end

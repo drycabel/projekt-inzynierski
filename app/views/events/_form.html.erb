@@ -2,38 +2,38 @@
 <%= form_with url: action_path, method: action_method, local: true do |f| %>
     <div class="form-group">
         <%= f.label :title, 'Title' %>
-        <%= f.text_field :title, value: @form.event&.title, class: 'form-control', required: true %>
+        <%= f.text_field :title, value: @form&.title || @form&.event&.title, class: 'form-control', required: true %>
     </div>
     <div class="form-group">
         <%= f.label :description, 'Description' %>
-        <%= f.text_area :description, value: @form.event&.description, class: 'form-control' %>
+        <%= f.text_area :description, value: @form&.description || @form&.event&.description, class: 'form-control' %>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <%= f.label :event_date, 'Event date' %>
-            <%= f.date_field :event_date, value: @form.event&.event_date, class: 'form-control', required: true %>
+            <%= f.date_field :event_date, value: @form&.event_date || @form&.event&.event_date, class: 'form-control', required: true %>
         </div>
         <div class="form-group col-md-6">
             <%= f.label :event_time, 'Event time' %>
-            <%= f.time_field :event_time, value: @form.event&.event_time&.strftime( "%T.%L" ), class: 'form-control', required: true %>
+            <%= f.time_field :event_time, value: @form&.event_time || @form&.event&.event_time&.strftime( "%T.%L" ), class: 'form-control', required: true %>
         </div>
     </div>
     <div class="form-group">
         <%= f.label :street, 'Street' %>
-        <%= f.text_field :street, value: @form.event.address&.street, class: 'form-control', required: true %>
+        <%= f.text_field :street, value: @form&.street || @form&.address&.street, class: 'form-control', required: true %>
     </div>
     <div class="form-row">
         <div class="form-group col-md-5">
             <%= f.label :city, 'City' %>
-            <%= f.text_field :city, value: @form.event.address&.city, class: 'form-control', required: true %>
+            <%= f.text_field :city, value: @form&.city || @form&.address&.city, class: 'form-control', required: true %>
         </div>
         <div class="form-group col-md-5">
             <%= f.label :province, 'Province' %>
-            <%= f.text_field :province, value: @form.event.address&.province, class: 'form-control', required: true %>
+            <%= f.text_field :province, value: @form&.province  || @form&.address&.province, class: 'form-control', required: true %>
         </div>
         <div class="form-group col-md-2">
             <%= f.label :zip, 'Zip code' %>
-            <%= f.text_field :zip, value: @form.event.address&.zip, class: 'form-control', required: true %>
+            <%= f.text_field :zip, value: @form&.zip  || @form&.address&.zip, class: 'form-control', required: true %>
         </div>
     </div>
     <div class="form-group">

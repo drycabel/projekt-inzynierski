@@ -12,5 +12,9 @@ class EventDecorator
         @role ||= @event.role_for(user)
     end
 
-    delegate :title, :description, to: :@event
+    def short_desc
+        @event&.description&.truncate(27) || "-"
+    end
+
+    delegate :title, :description, :event_date, :event_time, to: :@event
 end
