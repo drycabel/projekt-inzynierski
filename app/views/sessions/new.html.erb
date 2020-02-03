@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <%= f.label :password, 'Password' %>
-            <%= f.password_field :password, name: "session[password]", class: 'form-control' %>
+            <%= f.password_field :password, name: "session[password]", class: 'form-control', required: true  %>
         </div>
         <div class="form-group">
             <%= f.submit 'Sign-in', class: 'btn btn-outline-primary btn-block' %>

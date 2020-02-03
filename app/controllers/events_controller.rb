@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     def index
-        @events = Event.all
+        params[:category].present? ? @events = current_user.events : @events = Event.all
         @event_roles = Membership.where(event_id: @events.ids, user_id: current_user.id).each_with_object({}) {|member, result| result[member.event_id] = member.role}
         #  binding.pry
     end
