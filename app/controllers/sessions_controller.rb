@@ -22,7 +22,6 @@ class SessionsController < ApplicationController
                 end
         else
             render :new
-            # render "sessions/new.html.erb"
         end
     end
 

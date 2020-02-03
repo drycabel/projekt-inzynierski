@@ -1,6 +1,5 @@
 class PasswordsController < ApplicationController
     def edit
-        # binding.pry
         if User.exists?(params[:user_id])
             @form = UpdatePasswordForm.new(user_id: params[:user_id])
         else
