@@ -87,6 +87,7 @@ test:
 #
 production:
   <<: *default
-  database: inzynierka_production
-  username: dawid
+  database: postgresql-acute-62568
+  # username: dawid
+  web:  bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
   # password: <%= ENV['INZYNIERKA_DATABASE_PASSWORD'] %>
