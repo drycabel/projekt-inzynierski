@@ -18,3 +18,6 @@ require("bootstrap")
 //= require jquery3
 //= require popper
 //= require bootstrap
+import {navSlide} from './custom_nav.js';
+
+navSlide();
