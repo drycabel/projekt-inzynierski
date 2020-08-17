@@ -7,15 +7,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <%= render partial: "shared/navbar" %>
+   <!-- <%= render partial: "shared/navbar" %> -->
+    <%= render partial: "shared/custom_navbar" %>
     <%= render partial: "shared/alerts" %>
 
     <%= yield %>
   </body>
-
+  
   <%= javascript_pack_tag 'application'  %>
 </html>
 
