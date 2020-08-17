@@ -1,0 +1,36 @@
+<nav class="custom-navbar">
+    <%- user_decorator = UserDecorator.new(current_user) %>
+    <div class="logo custom-nav-items">
+        <h4>Sportify</h4>
+    </div>
+    <ul class="custom-nav-links custom-nav-items">
+        <% if current_user.present? %>
+            <li>
+                <%= link_to "Events", events_path %>
+            </li>
+            <li>
+                <%= link_to "My events", events_path(category: "current-user" ) %>
+            </li>
+            <li>
+                <%= link_to "Log out", sessions_path, method: :delete %>
+            </li>
+            <li>
+                <%= link_to "Logged as: #{user_decorator.short_email}", user_path(current_user) %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to "Sign in", new_session_path %>
+            </li>
+            <li>
+                <%= link_to "Sign up", new_registration_path %>
+            </li>
+        <% end %>
+    </ul>
+    <div class="burger custom-nav-items">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <script src="#"></script>
+
+</nav>
