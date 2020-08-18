@@ -33,8 +33,8 @@
     </div>
 
     <% if @user.id == current_user.id %>
-        <%= link_to "Edit user data", edit_user_path(@user), class: "btn btn-outline-primary btn-block" %>
-        <%= link_to "Change password", edit_user_password_path(@user), class: "btn btn-outline-warning btn-block" %>
-        <%= link_to "Destroy account", user_path(@user), method: :delete, data: {confirm: @destroy_message}, class: "btn btn-outline-danger btn-block" %>
+        <%= link_to "Edit user data", edit_user_path(@user), class: "btn btn-primary btn-block" %>
+        <%= link_to "Change password", edit_user_password_path(@user), class: "btn btn-warning btn-block" %>
+        <%= link_to "Destroy account", user_path(@user), method: :delete, data: {confirm: @destroy_message}, class: "btn btn-danger btn-block" %>
     <% end %>
 </div>

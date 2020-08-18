@@ -3,11 +3,16 @@
 .events-subheader {
     font-size: 14px;
     font-weight: 300;
-    border-bottom: 1px solid $lightgreen;
-    padding-bottom: 10px;
+    border-bottom: 1px solid $purple;
+    background-color: $purple;
+    padding: 1.25rem;
+    margin: 0px 0px 32px;
+    border-radius: 0.25rem;
+    // padding-bottom: 10px;
+    text-transform: uppercase;
 
     &.blue {
-        color: $lightgreen;
+        color: $dirt-white;
     }
 }
 
@@ -20,7 +25,14 @@
 }
 
 .event-details-container {
-    margin: 20px 0;
+    // margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    color: $dirt-white;  
+    background-color: $purple;
+    padding: 20px;
+    border-radius: 0.25rem;
+    margin-top: 16px;
+
     .event-group {
         margin-bottom: 5px;
 
@@ -34,14 +46,24 @@
 
         .event-label {
             font-weight: bold;
-            color: $lightgreen;
+            color: $dirt-white;
             border-bottom: 1px solid;
         }
 
         .event-value {
             padding: 10px;
             font-size: 20px;
-            color: rgba(0, 0, 0, 0.5);
+            color: $dirt-white;
         }
+    }
+
+    hr{
+        background-color: $purple;
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid $purple;
+        margin: 1em 0;
+        padding: 0;
     }
 }

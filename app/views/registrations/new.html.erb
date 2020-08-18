@@ -9,36 +9,38 @@
 
     <%= form_with url: registrations_path, local: true do |f| %>
         <%= f.hidden_field :token, name: "session[token]", value: params[:token] %>
+        <div class="form">
+            <div class="form-group">
+                <%= f.label :email, 'E-mail' %>
+                <%= f.email_field :email, name: "session[email]", value: params[:email] || @form.email, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :name, 'Name' %>
+                <%= f.text_field :name, name: "session[name]", value: @form.name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :surname, 'Surname' %>
+                <%= f.text_field :surname, name: "session[surname]", value: @form.surname, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :birth_date, 'Birth date' %>
+                <%= f.date_field :birth_date, name: "session[birth_date]", value: @form.birth_date, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :short_bio, 'Short biography' %>
+                <%= f.text_area :short_bio, name: "session[short_bio]", value: @form.short_bio, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :password, 'Password' %>
+                <%= f.password_field :password, name: "session[password]", class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :password_confirmation, 'Re-Type Password' %>
+                <%= f.password_field :password_confirmation, name: "session[password_confirmation]", class: 'form-control', required: true %>
+            </div>
+        </div>    
         <div class="form-group">
-            <%= f.label :email, 'E-mail' %>
-            <%= f.email_field :email, name: "session[email]", value: params[:email] || @form.email, class: 'form-control', required: true %>
-        </div>
-        <div class="form-group">
-            <%= f.label :name, 'Name' %>
-            <%= f.text_field :name, name: "session[name]", value: @form.name, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-            <%= f.label :surname, 'Surname' %>
-            <%= f.text_field :surname, name: "session[surname]", value: @form.surname, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-            <%= f.label :birth_date, 'Birth date' %>
-            <%= f.date_field :birth_date, name: "session[birth_date]", value: @form.birth_date, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-            <%= f.label :short_bio, 'Short biography' %>
-            <%= f.text_area :short_bio, name: "session[short_bio]", value: @form.short_bio, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-            <%= f.label :password, 'Password' %>
-            <%= f.password_field :password, name: "session[password]", class: 'form-control', required: true %>
-        </div>
-        <div class="form-group">
-            <%= f.label :password_confirmation, 'Re-Type Password' %>
-            <%= f.password_field :password_confirmation, name: "session[password_confirmation]", class: 'form-control', required: true %>
-        </div>
-        <div class="form-group">
-            <%= f.submit 'Sign-up', class: 'btn btn-outline-primary btn-block' %>
+            <%= f.submit 'Sign-up', class: 'btn btn-primary btn-block' %>
         </div>
     <% end %>
 </div>

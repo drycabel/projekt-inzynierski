@@ -1,7 +1,14 @@
 @import "./colors.scss";
 
 .usr-profile-container {
-    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    color: $dirt-white;  
+    background-color: $purple;
+    padding: 20px;
+    border-radius: 0.25rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
     .usr-group {
         margin-bottom: 5px;
 
@@ -11,14 +18,14 @@
 
         .usr-label {
             font-weight: bold;
-            color: $lightgreen;
+            color: $dirt-white;
             border-bottom: 1px solid;
         }
 
         .usr-value {
             padding: 10px;
             font-size: 20px;
-            color: rgba(0, 0, 0, 0.5);
+            color: $dirt-white;
         }
     }
 }

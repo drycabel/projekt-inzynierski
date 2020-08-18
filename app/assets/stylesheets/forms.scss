@@ -1,0 +1,40 @@
+@import "colors";
+
+.form {
+    font-family: 'Poppins', sans-serif;
+    
+    background-color: $purple;
+    padding: 20px;
+    border-radius: 0.25rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group{
+    label{
+        color: $dirt-white;
+    }
+
+    .form-control{
+        background-color: $dirt-white;
+        border: none;
+        
+
+        &.d-block{
+            background-color: black;
+            color: grey;
+        }
+    }
+}
+
+.form-text {
+    color: $dirt-white !important;
+
+    a{
+        text-decoration: none;
+        color: $purple;
+    }
+    a:hover{
+        color: $dirt-white;
+    }
+}

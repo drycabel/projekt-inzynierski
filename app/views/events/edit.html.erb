@@ -1,5 +1,5 @@
 <div class="event-form-container">
     <%= render partial: '/shared/page_header', locals: { header: 'Edit Event Data', subheader: 'This is the place where you can change event data.'} %>
 
-    <%= render partial: 'form', locals: { button_name: 'Edit', action_path: event_path(@form.event.id), action_method: :put} %>
+    <%= render partial: 'form', locals: { button_name: 'Save', action_path: event_path(@form.event.id), action_method: :put} %>
 </div>
