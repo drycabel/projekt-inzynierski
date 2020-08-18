@@ -1,4 +1,5 @@
 @import "breakpoints";
+@import "colors";
 
 *{
     margin: 0px;
@@ -7,6 +8,7 @@
 }
 
 .custom-navbar {
+    z-index: 1;
     margin: 0px 0px 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -14,8 +16,8 @@
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: #5D4954;
-    font-family: 'Poppins', sans-serif;
+    background-color: $purple;
+    font-family: 'Poppins', sans-serif;    
 }
 
 .custom-nav-items{
@@ -25,14 +27,23 @@
 }
 
 .logo{
-    color: rgb(226, 226, 226);
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 20px;
 }
 
 .logo h4{
-    margin: 0px;
+    margin: 0px;    
+}
+
+.logo a {
+    text-decoration: none;
+    color: $dirt-white;
+}
+
+.logo a:hover, a:active {
+    text-decoration: none;
+    color: black;
 }
 
 .custom-nav-links{
@@ -46,11 +57,15 @@
 }
 
 .custom-nav-links a{
-    color: rgb(226, 226, 226);
+    color: $dirt-white;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 14px;
+}
+
+.custom-nav-links a:hover, a:active{
+    color: black;
 }
 
 .burger{
@@ -61,7 +76,7 @@
     display: flex;
     width: 25px;
     height: 3px;
-    background-color: rgb(226, 226, 226);
+    background-color: $dirt-white;
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -74,16 +89,19 @@
         z-index: 1;
         position: absolute;
         right: 0px;
-        height: 92vh;
+        height: 65vh;
         top: 8vh;
-        background-color: #5D4954;
+        background-color: $purple;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 60%;
         transform: translateX(100%);
-        transition: transform 0.5s ease-in;        
+        transition: transform 0.5s ease-in;   
+        border-bottom-left-radius: 0.25rem;
+        border:solid 1px grey;
+        border-top: none;     
     }
     .custom-nav-links li{
         opacity: 0;
@@ -98,6 +116,17 @@
 
 .nav-active{
     transform: translateX(0%);
+}
+
+.sticky{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + div{
+    padding-top: 60px;
 }
 
 @keyframes navLinkFade{

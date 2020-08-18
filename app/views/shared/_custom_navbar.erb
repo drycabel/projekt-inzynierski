@@ -1,7 +1,7 @@
 <nav class="custom-navbar">
     <%- user_decorator = UserDecorator.new(current_user) %>
     <div class="logo custom-nav-items">
-        <h4>Sportify</h4>
+        <h4><%= link_to 'Sportify', root_path %></h4>
     </div>
     <ul class="custom-nav-links custom-nav-items">
         <% if current_user.present? %>

@@ -1,24 +1,27 @@
 @import "breakpoints";
+@import "colors";
 
 .registration-container {
    margin: 20px auto;
    max-width: 900px;
 
-   @media screen and (max-width: $large) {
-    max-width: 700px;
-   }
+//    @media screen and (max-width: $large) {
+//     max-width: 700px;
+//    }
 
-   @media screen and (max-width: $medium) {
-    max-width: 400px;
-   }
-   @media screen and (max-width: $small) {
-    max-width: 340px;
-   }
+//    @media screen and (max-width: $medium) {
+//     max-width: 400px;
+//    }
+//    @media screen and (max-width: $small) {
+//     max-width: 340px;
+//    }
 }
 
 .events-container {
     margin: 20px auto;
-    width: 90%;
+    // width: 90%;
+    max-width: 900px;
+    font-family: 'Poppins', sans-serif;    
 }
 
 .event-form-container {
@@ -35,4 +38,23 @@
     @media screen and (max-width: $small) {
         max-width: 340px;
     }
+}
+
+.event-members-container {
+    font-family: 'Poppins', sans-serif;
+    color: $dirt-white;  
+    background-color: $purple;
+    padding: 20px;
+    border-radius: 0.25rem;
+    margin-top: 16px;
+}
+
+.invitation-container {
+    font-family: 'Poppins', sans-serif;
+    color: $dirt-white;  
+    background-color: $purple;
+    padding: 20px;
+    border-radius: 0.25rem;
+    margin-top: 16px;
+    margin-bottom: 16px;   
 }

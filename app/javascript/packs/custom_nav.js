@@ -22,4 +22,18 @@ const navSlide = () => {
     
 }
 
-export {navSlide};
+const stickyNav = () => {
+    var navbar = document.querySelector('.custom-navbar');
+    var sticky = navbar.offsetTop;
+    
+    window.addEventListener('scroll', () => {
+        if(window.pageYOffset >= sticky){
+            navbar.classList.add("sticky");
+        }else {
+            navbar.classList.remove("sticky");
+        }
+    })
+}
+
+
+export {navSlide, stickyNav};

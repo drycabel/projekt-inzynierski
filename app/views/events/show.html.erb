@@ -46,8 +46,7 @@
 
     </div>
 
-    <hr>
-    <div>
+    <div class="event-members-container">
         <h4>Event members</h4>
         <br>
         <ul class="list-group">
@@ -77,30 +76,31 @@
             </div>
         </div>
     </div>
-    <hr>
-    <div>
+    
+    <div class="invitation-container">
         <h4>Invite to this event</h4>
         <br>
         <%= form_with url: event_invitations_path(@event), method: :post, local: true do |f| %>
-        <div class="form-row">
-            <div class="form-group col-md-10">
-                <%= f.email_field :email, placeholder: "Email", class: 'form-control', required: true%>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <%= f.email_field :email, placeholder: "Email", class: 'form-control', required: true%>
+                </div>
+                <div class="form-group col-md-2">
+                    <%= f.submit "Invite", class: 'btn btn-success btn-block' %>
+                </div>
             </div>
-            <div class="form-group col-md-2">
-                <%= f.submit "Invite", class: 'btn btn-outline-success btn-block' %>
-            </div>
-    <% end %>
+        <% end %>
     </div>
-    <br>
+
     <% if @event.can_i_manage_event?(@event_roles[@event.id] || Event::ROLES.fetch(:guest)) %>
-        <%= link_to "Edit", edit_event_path(@event), class: "btn btn-outline-primary btn-block" %>
-        <%= link_to "Destroy", event_path(@event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-outline-danger btn-block" %>
+        <%= link_to "Edit", edit_event_path(@event), class: "btn btn-primary btn-block" %>
+        <%= link_to "Destroy", event_path(@event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" %>
     <% end %>
     <% if @event.can_i_join?(@event_roles[@event.id] || Event::ROLES.fetch(:guest)) %>
-        <%= link_to "Join", event_join_event_path(@event), method: :post , class: "btn btn-outline-primary btn-block" %>
+        <%= link_to "Join", event_join_event_path(@event), method: :post , class: "btn btn-primary btn-block" %>
     <% end %>
     <% if @event.can_i_quit?(@event_roles[@event.id] || Event::ROLES.fetch(:guest)) %>
-        <%= link_to "Quit", event_quit_event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-warning btn-block" %>
+        <%= link_to "Quit", event_quit_event_path(@event), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-warning btn-block" %>
     <% end %>
     <%# dodać join button %>
 </div>

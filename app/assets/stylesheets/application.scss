@@ -21,6 +21,16 @@
 @import "users";
 @import "components";
 @import "custom_navbar";
+@import "forms";
+@import "alerts";
+
+body {
+    background-color: grey;
+}
+
+.btn {
+    color: $dirt-white;
+}
 
 .nav-link {
     color: $lightgreen !important;
@@ -52,35 +62,29 @@
 
 
     .card {
-        border: 1px solid rgba(18, 160, 179, 0.3);
-
+        //border: 1px solid $dirt-white;
+        background-color: $purple;
+        color: $dirt-white;
         .card-body {
             // padding-bottom: 70px;
 
             .card-text {
                 padding-left: 20px;
+                color: $dirt-white;
             }
 
-            .creator-container {
-                position: absolute;
-                left: 1.25rem;
-                bottom: -10px;
-                width: 90%;
-
-                .creator-label {
-                    font-size: 12px;
-                    font-weight: bold;
-                    color: $lightgreen;
+            .card-footer{
+                &.text-muted{
+                    a{
+                        color: $dirt-white;
+                        text-decoration: none;
+                    }
+                    
                 }
-                .creator-email {
-                    font-size: 12px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    color: $lightgreen;
-                    font-weight: 300;
-                }
+                
             }
+
+            
         }
     }
  }
@@ -97,4 +101,17 @@
             color: red;
         }
     }
+ }
+
+
+ div.jumbotron {
+     background-color: $purple;
+     font-family: 'Poppins', sans-serif;
+     text-transform: uppercase;
+     border-radius: 0.25rem;
+     margin: 0px 0px 16px;
+
+     &.display-4{
+         color: $dirt-white;
+     }
  }
