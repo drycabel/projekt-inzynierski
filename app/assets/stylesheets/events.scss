@@ -10,6 +10,7 @@
     border-radius: 0.25rem;
     // padding-bottom: 10px;
     text-transform: uppercase;
+    box-shadow: $box-shadow;
 
     &.blue {
         color: $dirt-white;
@@ -32,6 +33,7 @@
     padding: 20px;
     border-radius: 0.25rem;
     margin-top: 16px;
+    box-shadow: $box-shadow;
 
     .event-group {
         margin-bottom: 5px;
@@ -66,4 +68,8 @@
         margin: 1em 0;
         padding: 0;
     }
+}
+
+.card{
+    box-shadow: $box-shadow;
 }
