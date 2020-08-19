@@ -1,10 +1,11 @@
 @import "breakpoints";
+@import "colors";
 
 .alert {
-    width: 100%;
-    margin: 20px auto;
+    margin: 20px auto !important;
     max-width: 900px;
-    
+    box-shadow: $box-shadow;
+
     @media screen and (max-width: $large) {
         max-width: 700px;
     }

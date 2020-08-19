@@ -16,8 +16,9 @@
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: $purple;
-    font-family: 'Poppins', sans-serif;    
+    background-color: $dark-purple;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.4);    
 }
 
 .custom-nav-items{
@@ -91,7 +92,7 @@
         right: 0px;
         height: 65vh;
         top: 8vh;
-        background-color: $purple;
+        background-color: $dark-purple;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -100,8 +101,9 @@
         transform: translateX(100%);
         transition: transform 0.5s ease-in;   
         border-bottom-left-radius: 0.25rem;
-        border:solid 1px grey;
-        border-top: none;     
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // border:solid 1px grey;
+        // border-top: none;     
     }
     .custom-nav-links li{
         opacity: 0;
@@ -127,6 +129,10 @@
 
 .sticky + div{
     padding-top: 60px;
+}
+
+.sticky + .alert {
+    padding-top: 60px !important;
 }
 
 @keyframes navLinkFade{

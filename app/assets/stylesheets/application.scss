@@ -71,20 +71,7 @@ body {
             .card-text {
                 padding-left: 20px;
                 color: $dirt-white;
-            }
-
-            .card-footer{
-                &.text-muted{
-                    a{
-                        color: $dirt-white;
-                        text-decoration: none;
-                    }
-                    
-                }
-                
-            }
-
-            
+            }            
         }
     }
  }
@@ -110,6 +97,7 @@ body {
      text-transform: uppercase;
      border-radius: 0.25rem;
      margin: 0px 0px 16px;
+     box-shadow: $box-shadow;
 
      &.display-4{
          color: $dirt-white;
