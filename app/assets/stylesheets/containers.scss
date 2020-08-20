@@ -3,8 +3,8 @@
 
 .registration-container {
    margin: 20px auto;
-   max-width: 900px;
-    // width: 90%;
+   max-width: 1000px;
+
     
    @media screen and (max-width: $large) {
         max-width: 700px;
@@ -18,22 +18,27 @@
    }
 }
 
+
+
 .events-container {
     margin: 20px auto;
-    width: 90%;
+    max-width: 1000px;
 
+    @media screen and (max-width: $large) {
+        max-width: 800px;
+    }
+
+    @media screen and (max-width: $medium) {
+        max-width: 500px;
+    }
+    @media screen and (max-width: $small) {
+        max-width: 440px;
+    }
 }
 
 .welcome-container {
     margin: 20px auto;
-    width: 90%;
-    box-shadow: $box-shadow;
-}
-
-.event-form-container {
-    margin: 20px auto;
-    max-width: 900px;
-    // width: 90%;
+    max-width: 1000px;
     
 
     @media screen and (max-width: $large) {
@@ -48,23 +53,19 @@
     }
 }
 
-.event-members-container {
-    font-family: 'Poppins', sans-serif;
-    color: $dirt-white;  
-    background-color: $purple;
-    padding: 20px;
-    border-radius: 0.25rem;
-    margin-top: 16px;
-    box-shadow: $box-shadow;
-}
+.event-form-container {
+    margin: 20px auto;
+    max-width: 1000px;
+    
 
-.invitation-container {
-    font-family: 'Poppins', sans-serif;
-    color: $dirt-white;  
-    background-color: $purple;
-    padding: 20px;
-    border-radius: 0.25rem;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    box-shadow: $box-shadow;   
+    @media screen and (max-width: $large) {
+        max-width: 700px;
+    }
+
+    @media screen and (max-width: $medium) {
+        max-width: 400px;
+    }
+    @media screen and (max-width: $small) {
+        max-width: 340px;
+    }
 }

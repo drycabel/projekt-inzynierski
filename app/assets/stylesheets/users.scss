@@ -1,9 +1,8 @@
 @import "./colors.scss";
 
 .usr-profile-container {
-    font-family: 'Poppins', sans-serif;
-    color: $dirt-white;  
-    background-color: $purple;
+    font-family: 'Poppins', sans-serif; 
+    background-color: $elements-color;
     padding: 20px;
     border-radius: 0.25rem;
     margin-top: 16px;
@@ -19,14 +18,14 @@
 
         .usr-label {
             font-weight: bold;
-            color: $dirt-white;
+            color: $details-label-color;
             border-bottom: 1px solid;
         }
 
         .usr-value {
             padding: 10px;
             font-size: 20px;
-            color: $dirt-white;
+            color: $details-value-color;
         }
     }
 }

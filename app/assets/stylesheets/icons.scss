@@ -1,0 +1,25 @@
+@import "colors";
+.add-event{
+    .fa-calendar-plus{
+        width: 90px;
+        block-size: 50px;
+        color: $text-color;
+        // magda swieczka 232
+        
+    }
+    .fa-calendar-plus:active, .fa-calendar-plus:hover{
+    
+        color: grey;
+        
+    }        
+}
+
+.event-info-btn, .event-edit-btn, .event-delete-btn {
+    font-family: 'Poppins', sans-serif;
+    width: 50px;
+    
+}
+
+.btn-form {
+    box-shadow: $button-shadow;
+}

@@ -16,7 +16,7 @@
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: $dark-purple;
+    background-color: $nav-color;
     font-family: 'Poppins', sans-serif;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,.4);    
 }
@@ -31,21 +31,23 @@
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 20px;
+    text-shadow: $text-shadow;
+
+    h4 {
+        margin: 0px;  
+    }
+
+    a {
+        text-decoration: none;
+        color: $nav-links-color;
+    }
+
+    a:hover, a:active {
+        text-decoration: none;
+        color: $nav-links-color-hover;
+    }
 }
 
-.logo h4{
-    margin: 0px;    
-}
-
-.logo a {
-    text-decoration: none;
-    color: $dirt-white;
-}
-
-.logo a:hover, a:active {
-    text-decoration: none;
-    color: black;
-}
 
 .custom-nav-links{
     display: flex;
@@ -58,7 +60,7 @@
 }
 
 .custom-nav-links a{
-    color: $dirt-white;
+    color: $nav-links-color;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
@@ -66,7 +68,7 @@
 }
 
 .custom-nav-links a:hover, a:active{
-    color: black;
+    color: $nav-links-color-hover;
 }
 
 .burger{
@@ -77,9 +79,15 @@
     display: flex;
     width: 25px;
     height: 3px;
-    background-color: $dirt-white;
+    background-color: $nav-links-color;
     margin: 5px;
     transition: all 0.3s ease;
+}
+
+.burger:active, .burger:hover {
+    .line1, .line2, .line3{
+        background-color: $nav-links-color-hover;
+    }    
 }
 
 @media screen and (max-width: $large){
@@ -92,7 +100,7 @@
         right: 0px;
         height: 65vh;
         top: 8vh;
-        background-color: $dark-purple;
+        background-color: $nav-color;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -122,17 +130,9 @@
 
 .sticky{
     z-index: 1;
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
-}
-
-.sticky + div{
-    padding-top: 60px;
-}
-
-.sticky + .alert {
-    padding-top: 60px !important;
 }
 
 @keyframes navLinkFade{
