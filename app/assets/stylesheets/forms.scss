@@ -3,7 +3,7 @@
 .form {
     font-family: 'Poppins', sans-serif;
     
-    background-color: $purple;
+    background-color: $elements-color;
     padding: 20px;
     border-radius: 0.25rem;
     margin-top: 16px;
@@ -13,11 +13,15 @@
 
 .form-group{
     label{
-        color: $dirt-white;
+        color: $form-label-color;
+    }
+
+    input {
+        color: $form-input-color;
     }
 
     .form-control{
-        background-color: $dirt-white;
+        background-color: $form-bg-color;
         border: none;
         
 
@@ -33,7 +37,7 @@
 
     a{
         text-decoration: none;
-        color: $purple;
+        color: $elements-color;
     }
     a:hover{
         color: $dirt-white;

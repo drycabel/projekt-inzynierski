@@ -2,18 +2,19 @@
 @import "colors";
 
 .alert {
-    margin: 20px auto !important;
-    max-width: 900px;
-    box-shadow: $box-shadow;
-
+    margin: 16px auto !important;
+    // width: 90%;
+    max-width: 1000px;
     @media screen and (max-width: $large) {
         max-width: 700px;
     }
 
-    @media screen and (max-width: $medium) {
+   @media screen and (max-width: $medium) {
         max-width: 400px;
-    }
-    @media screen and (max-width: $small) {
+   }
+   @media screen and (max-width: $small) {
         max-width: 340px;
-    }
+   }
+
+    box-shadow: $box-shadow;
 }

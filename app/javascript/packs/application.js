@@ -8,6 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,7 +19,13 @@ require("bootstrap")
 //= require jquery3
 //= require popper
 //= require bootstrap
+import '@fortawesome/fontawesome-free/js/all.js';
+
+
+
+
 import {navSlide, stickyNav} from './custom_nav.js';
+
 
 navSlide();
 stickyNav();

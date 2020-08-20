@@ -14,6 +14,8 @@
  *= require_self
  */
 @import "bootstrap";
+@import "@fortawesome/fontawesome-free/css/all.css"; 
+
 @import "breakpoints";
 @import "containers";
 @import "events";
@@ -23,13 +25,14 @@
 @import "custom_navbar";
 @import "forms";
 @import "alerts";
+@import "icons";
 
 body {
-    background-color: grey;
+    background-color: $background-color;
 }
 
 .btn {
-    color: $dirt-white;
+    color: $text-color;
 }
 
 .nav-link {
@@ -47,7 +50,7 @@ body {
     border-radius: 10px;
     margin: 5px 5px 0px 5px;
 }
- .custom-cards {
+.custom-cards {
     display: grid;
     // grid-template-columns: 1fr 1fr 1fr;
     grid-template-columns: auto auto auto;
@@ -62,19 +65,29 @@ body {
 
 
     .card {
-        //border: 1px solid $dirt-white;
-        background-color: $purple;
-        color: $dirt-white;
+        background-color: $elements-color;
+        color: $text-color;
+        
         .card-body {
             // padding-bottom: 70px;
+            .card-title {
+                color: $nav-color;
+            }
 
             .card-text {
                 padding-left: 20px;
-                color: $dirt-white;
+                color: $text-color;
             }            
         }
+
+        .card-footer{
+            p, a{
+                text-decoration: none;
+                color: $text-color;
+            }
+        }
     }
- }
+}
 
  ul.event-members-list {
     li {
@@ -92,14 +105,19 @@ body {
 
 
  div.jumbotron {
-     background-color: $purple;
+     background-color: $elements-color;
      font-family: 'Poppins', sans-serif;
      text-transform: uppercase;
      border-radius: 0.25rem;
      margin: 0px 0px 16px;
      box-shadow: $box-shadow;
+    
 
-     &.display-4{
-         color: $dirt-white;
+     h1, p {
+         color: $jumbotron-text-color;
      }
+ }
+
+ .btn{
+     background-color: $nav-color;
  }
