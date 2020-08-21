@@ -33,23 +33,31 @@ body {
 
 .btn {
     color: $text-color;
+    background-color: #434738;
+    border-color: #343a40;
+}
+.navbar {
+    background-color: $nav-color;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.4);  
+    
+    .navbar-toggler{
+        color: $nav-links-color;
+    }
+
+
+    .navbar-brand, 
+    .navbar-collapse .navbar-nav .nav-item .nav-link    
+    {
+        color: $nav-links-color;
+    }
+    .navbar-brand:hover, 
+    .navbar-collapse .navbar-nav .nav-item .nav-link:hover, 
+    .navbar-collapse .navbar-nav .nav-item .nav-link:active {
+        color: $nav-links-color-hover;
+    }
 }
 
-.nav-link {
-    color: $lightgreen !important;
-}
-
-.navbar-brand {
-    color: $lightgreen !important;
-    font-weight: bold;
-    // text-shadow: 3px 7px 5px rgba(124,168,206,0.7);
-}
-
-.nav-extension {
-    border: 1px solid $lightgreen;
-    border-radius: 10px;
-    margin: 5px 5px 0px 5px;
-}
 .custom-cards {
     display: grid;
     // grid-template-columns: 1fr 1fr 1fr;
@@ -67,7 +75,7 @@ body {
     .card {
         background-color: $elements-color;
         color: $text-color;
-        
+
         .card-body {
             // padding-bottom: 70px;
             .card-title {

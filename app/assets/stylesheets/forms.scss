@@ -16,7 +16,7 @@
         color: $form-label-color;
     }
 
-    input {
+    input.form-control {
         color: $form-input-color;
     }
 
@@ -33,13 +33,14 @@
 }
 
 .form-text {
-    color: $dirt-white !important;
+    color: $nav-color;
 
     a{
         text-decoration: none;
-        color: $elements-color;
+        color: $nav-color;
+        font-weight: bold;
     }
     a:hover{
-        color: $dirt-white;
+        color: $nav-links-color-hover;
     }
 }
