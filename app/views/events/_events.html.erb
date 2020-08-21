@@ -7,17 +7,17 @@
                 <p class="card-text"><%= event_decorator.short_desc %></p>
                 <div class="">
                     <!--<%= link_to "Details", event_path(event), class: "btn btn-info btn-sm btn-block" %> -->
-                    <%= link_to event_path(event), class: "btn btn-dark btn-block" do %>
+                    <%= link_to event_path(event), class: "btn btn-info btn-block" do %>
                         Details
                         <i class="fa fa-info event-info-btn"></i>
                     <% end %>
                     <% if event.can_i_manage_event?(@event_roles[event.id] || Event::ROLES.fetch(:guest)) %>
-                        <%= link_to edit_event_path(event), class: "btn btn-dark btn-block" do %>
+                        <%= link_to edit_event_path(event), class: "btn btn-primary btn-block" do %>
                             Edit
                             <i class="fa fa-edit event-edit-btn"></i>
                         <% end %>
                         <!--<%= link_to "Edit", edit_event_path(event), class: "btn btn-primary btn-sm btn-block" %>-->
-                        <%= link_to event_path(event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-dark btn-block" do %>
+                        <%= link_to event_path(event),method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-block" do %>
                             Destroy
                             <i class="fa fa-trash event-delete-btn"></i>
                         <% end %>
