@@ -56,6 +56,8 @@ body {
     .navbar-collapse .navbar-nav .nav-item .nav-link:active {
         color: $nav-links-color-hover;
     }
+
+
 }
 
 .custom-cards {
@@ -75,6 +77,14 @@ body {
     .card {
         background-color: $elements-color;
         color: $text-color;
+        box-shadow: $box-shadow;
+
+        &:hover {
+            box-shadow: $card-hover;
+            // color: lighten($text-color, 5%);
+            // background-color: lighten($elements-color, 5%);
+            filter: brightness(85%);
+        }
 
         .card-body {
             // padding-bottom: 70px;

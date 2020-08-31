@@ -14,17 +14,15 @@
 
     &.blue {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         
         color: $dirt-white;
-        a{
-            align-items: center;
-        }
-        h4{
-            margin: 0px;
-            margin-right: 5px;
 
+        a {
+            justify-content: center;
+            align-items: flex-start;
         }
+        
     }
 
     h4{
@@ -102,8 +100,4 @@
     margin-top: 16px;
     margin-bottom: 16px;
     box-shadow: $box-shadow;   
-}
-
-.card{
-    box-shadow: $box-shadow;
 }
