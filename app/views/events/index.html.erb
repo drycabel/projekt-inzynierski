@@ -25,4 +25,5 @@
     <div style="clear: both;"></div>
 
     <%= render partial: 'events', locals: {collection: @events} %>
+    <%= paginate @events %>
 </div>
