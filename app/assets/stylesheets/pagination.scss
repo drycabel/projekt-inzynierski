@@ -1,0 +1,30 @@
+@import "colors";
+
+.pagination-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    .pagination {
+        font-size: 20px;
+        box-shadow: $box-shadow;
+        .page-item{
+            .page-link{
+                color: $elements-color;
+            }
+        }
+
+        .page-item.active{
+            .page-link{
+                color: $text-color;
+                background-color: $elements-color;
+                border-color: $elements-color;
+            }
+            .page-link:hover{
+                color: $nav-color;
+            }
+            
+        }
+    }
+}
+

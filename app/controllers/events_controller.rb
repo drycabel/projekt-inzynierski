@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
     def index
-        params[:category].present? ? @events = current_user.events : @events = Event.all
+        params[:category].present? ? @events = current_user.events.page(params[:page]) : @events = Event.all.page(params[:page])
         @event_roles = Membership.where(event_id: @events.ids, user_id: current_user.id).each_with_object({}) {|member, result| result[member.event_id] = member.role}
         #  binding.pry
     end
@@ -53,6 +53,6 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.permit(:title, :description, :event_date, :event_time, :street, :city, :province, :zip)
+        params.permit(:title, :description, :event_date, :event_time, :street, :city, :province, :zip, :page)
     end
 end
