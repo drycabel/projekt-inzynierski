@@ -8,11 +8,19 @@
     <% end %>
 
     <%= render partial: '/shared/page_header', locals: { header: header, subheader: subheader} %>
-    <div class="events-subheader blue mb-3">
-        <h4>You can add your own one:</h4>
-        <%= link_to new_event_path, class: "add-event btn btn-success btn-sm" do %>
-                <i class="fa fa-calendar-plus"></i>
-        <% end %>  
+    <div class="events-subheader">
+        <div id="events-sub-h">
+            <h4>You can add your own one:</h4>
+        </div>
+
+        <div id="events-sub-i">
+            <%= link_to new_event_path, class: "add-event btn btn-success" do %>
+                <i class="fa fa-calendar-plus btn-block"></i>
+            <% end %> 
+        </div>
+        <div style="clear: both;"></div>
+        
+         
     </div>
     <div style="clear: both;"></div>
 
