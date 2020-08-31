@@ -1,10 +1,9 @@
 @import "colors";
 .add-event{
     .fa-calendar-plus{
-        width: 90px;
-        // block-size: 50px;
-        color: $text-color;
         
+        color: $text-color;
+        font-size: 30px;
     }        
 }
 

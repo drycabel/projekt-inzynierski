@@ -11,21 +11,22 @@
     // padding-bottom: 10px;
     text-transform: uppercase;
     box-shadow: $box-shadow;
+    display: flex;
+    #events-sub-h {
+        display: flex;       
+        align-items: center;
+        float: left;
+        margin-right: 20px;
+    }
 
-    &.blue {
-        display: flex;
-        justify-content: space-between;
-        
-        color: $dirt-white;
-
-        a {
-            justify-content: center;
-            align-items: flex-start;
-        }
-        
+    #events-sub-i {
+        align-items: center;
+        float: left;
+        align-items: center;
     }
 
     h4{
+        
         margin: 0px;
         display: inline;
         justify-content: center;
