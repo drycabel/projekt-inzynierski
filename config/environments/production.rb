@@ -71,8 +71,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    user_name: 'drycabel',
-    password: 'DRycabel29',
+    user_name: Rails.application.credentials[Rails.env.to_sym][:sendgrid][:user_name],
+    password: Rails.application.credentials[Rails.env.to_sym][:sendgrid][:password],
     domain: 'localhost',
     address: 'smtp.sendgrid.net',
     port: 587,
